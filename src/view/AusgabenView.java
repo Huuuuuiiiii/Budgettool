@@ -5,164 +5,112 @@
 
 package view;
 
-import javax.swing.JPanel;
+import design.Components;
+import design.Farben;
+import design.Schrift;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import java.awt.LayoutManager;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
+import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
+public class AusgabenView
+extends JPanel {
+    private JButton cancelButton;
+    private JButton addButton;
+    private JPanel editPanel;
+    private JPanel titelPanel;
+    private JLabel betragLabel;
+    private JLabel datumLabel;
+    private JLabel personLabel;
+    private JLabel kategorieLabel;
+    private JLabel titel;
+    private JTextField betragTextField;
+    private JSpinner daySpinner;
+    private JSpinner monthSpinner;
+    private JSpinner yearSpinner;
+    private JComboBox betragComboBox;
+    private JComboBox personComboBox;
+    private JComboBox kategorieComboBox;
 
-import design.Farben;
-import design.Rahmen;
-import design.Schrift;
+    public AusgabenView() {
+    	setLayout(new BorderLayout(0, 0));
+        setBorder(new EmptyBorder(10, 10, 10, 10));
+        setBackground(Farben.getDefaultBackgroundcolor());
+        setSize(600, 600);
+        titelPanel = new JPanel();
+        add(titelPanel, BorderLayout.NORTH);
+        
+        titelPanel.setLayout(new BorderLayout(0, 0));
+        titelPanel.setBackground(Farben.getDefaultBackgroundcolor());
+        
+        titel = new JLabel("Shortcut");
+        titel.setFont(Schrift.TITEL);
+        titel.setHorizontalAlignment(0);
+        titel.setBackground(Farben.getDefaultBackgroundcolor());
+        titel.setForeground(Farben.getDefaultFontcolor());
+        titelPanel.add(titel, BorderLayout.CENTER);
+        
+        cancelButton = Components.createButtom("< Zurück");
+        titelPanel.add(cancelButton,  BorderLayout.WEST);
+        
+        editPanel = new JPanel();
+        add(editPanel, BorderLayout.CENTER);
+        editPanel.setBackground(Farben.getDefaultBackgroundcolor());
+        editPanel.setLayout(null);
+        
+        betragLabel = Components.createImageLabel("pic/money.png", 67, 83, 40, 40);
+        editPanel.add(this.betragLabel);
+        
+        kategorieLabel = Components.createImageLabel("pic/money.png", 67, 83, 40, 40);
+        editPanel.add(this.kategorieLabel);
+        
+        datumLabel = Components.createImageLabel("pic/calendar.png", 67, 183, 40, 40);
+        editPanel.add(this.datumLabel);
+        
+        personLabel = Components.createImageLabel("pic/person.png", 67, 233, 40, 40);
+        editPanel.add(this.personLabel);
+        
+        betragTextField = Components.createTextField("", 147, 92, 116, 20);
+        editPanel.add(this.betragTextField);
+        
+        betragComboBox = Components.createComboBox(273, 92, 66, 20);
+        editPanel.add(this.betragComboBox);
+        
+        kategorieComboBox = Components.createComboBox(147, 142, 155, 20);
+        editPanel.add(this.kategorieComboBox);
+        
+        daySpinner = Components.createSpinner(147, 192, 40, 20);
+        editPanel.add(this.daySpinner);
+        
+        monthSpinner = Components.createSpinner(197, 192, 40, 20);
+        editPanel.add(this.monthSpinner);
+        
+        yearSpinner = Components.createSpinner(247, 192, 55, 20);
+        editPanel.add(this.yearSpinner);
+        
+        personComboBox = Components.createComboBox(148, 242, 154, 20);
+        editPanel.add(this.personComboBox);
+        
+        addButton = Components.createButtom("Enter");
+        addButton.setBounds(250, 292, 89, 23);
+        editPanel.add(this.addButton);
+    }
 
-import javax.swing.JButton;
-import javax.swing.ImageIcon;
-import javax.swing.JTextField;
-import java.awt.Color;
-import javax.swing.JComboBox;
-import javax.swing.JSpinner;
-import java.awt.Font;
-import java.awt.event.ActionListener;
+    public void setCancelButtonActionListener(ActionListener e) {
+        cancelButton.addActionListener(e);
+    }
 
-public class AusgabenView extends JPanel {
-
-	/**
-	 * Create the panel.
-	 */
-	
-	private JButton cancelButton, addButton;
-	private JPanel editPanel, titelPanel;
-	private JLabel betragLabel, datumLabel, personLabel, kategorieLabel, titel;
-	private JTextField betragTextField;
-	private JSpinner daySpinner, monthSpinner, yearSpinner;
-	private JComboBox betragComboBox, personComboBox, kategorieComboBox;
-	
-	public AusgabenView() {
-		setLayout(new BorderLayout(0, 0));
-		setBorder(new EmptyBorder(10, 10, 10, 10));
-		setBackground(Farben.getDefaultBackgroundcolor());
-		
-		editPanel = new JPanel();
-		add(editPanel, BorderLayout.CENTER);
-		editPanel.setBackground(Farben.getDefaultBackgroundcolor());
-		editPanel.setLayout(null);
-		
-		betragLabel = new JLabel("");
-		betragLabel.setIcon(new ImageIcon("pic/money.png"));
-		betragLabel.setBounds(67, 33, 40, 40);
-		betragLabel.setBackground(Farben.getDefaultBackgroundcolor());
-		editPanel.add(betragLabel);
-		
-		kategorieLabel = new JLabel("");
-		kategorieLabel.setIcon(new ImageIcon("pic/folder.png"));
-		kategorieLabel.setBounds(67, 83, 40, 40);
-		kategorieLabel.setBackground(Farben.getDefaultBackgroundcolor());
-		editPanel.add(kategorieLabel);
-		
-		datumLabel = new JLabel("");
-		datumLabel.setIcon(new ImageIcon("pic/calendar.png"));
-		datumLabel.setBounds(67, 133, 40, 40);
-		datumLabel.setBackground(Farben.getDefaultBackgroundcolor());
-		editPanel.add(datumLabel);
-		
-		personLabel = new JLabel("");
-		personLabel.setIcon(new ImageIcon("pic/person.png"));
-		personLabel.setBounds(67, 183, 40, 40);
-		personLabel.setBackground(Farben.getDefaultBackgroundcolor());
-		editPanel.add(personLabel);
-		
-		betragTextField = new JTextField();
-		betragTextField.setBounds(147, 42, 116, 20);
-		betragTextField.setFont(Schrift.STANDART);
-		editPanel.add(betragTextField);
-		betragTextField.setBackground(Farben.getDefaultBackgroundcolor());
-		betragTextField.setForeground(Farben.getDefaultFontcolor());
-		betragTextField.setBorder(Rahmen.defaultBorder);
-		betragTextField.setColumns(10);
-		
-		kategorieComboBox = new JComboBox();
-		kategorieComboBox.setFont(Schrift.STANDART);
-		kategorieComboBox.setBounds(147, 92, 155, 20);
-		kategorieComboBox.setBackground(Farben.getDefaultBackgroundcolor());
-		kategorieComboBox.setForeground(Farben.getDefaultFontcolor());
-		kategorieComboBox.setBorder(Rahmen.defaultBorder);
-		editPanel.add(kategorieComboBox);
-		
-		daySpinner = new JSpinner();
-		daySpinner.setFont(Schrift.STANDART);
-		daySpinner.setBounds(147, 142, 40, 20);
-		daySpinner.setBackground(Farben.getDefaultBackgroundcolor());
-		daySpinner.setForeground(Farben.getDefaultFontcolor());
-		daySpinner.setBorder(Rahmen.defaultBorder);
-		editPanel.add(daySpinner);
-		
-		monthSpinner = new JSpinner();
-		monthSpinner.setFont(Schrift.STANDART);
-		monthSpinner.setBounds(197, 142, 40, 20);
-		monthSpinner.setBackground(Farben.getDefaultBackgroundcolor());
-		monthSpinner.setForeground(Farben.getDefaultFontcolor());
-		monthSpinner.setBorder(Rahmen.defaultBorder);
-		editPanel.add(monthSpinner);
-		
-		yearSpinner = new JSpinner();
-		yearSpinner.setFont(Schrift.STANDART);
-		yearSpinner.setBounds(247, 142, 55, 20);
-		yearSpinner.setBackground(Farben.getDefaultBackgroundcolor());
-		yearSpinner.setForeground(Farben.getDefaultFontcolor());
-		yearSpinner.setBorder(Rahmen.defaultBorder);
-		editPanel.add(yearSpinner);
-		
-		personComboBox = new JComboBox();
-		personComboBox.setFont(Schrift.STANDART);
-		personComboBox.setBounds(148, 192, 154, 20);
-		personComboBox.setBackground(Farben.getDefaultBackgroundcolor());
-		personComboBox.setForeground(Farben.getDefaultFontcolor());
-		personComboBox.setBorder(Rahmen.defaultBorder);
-		editPanel.add(personComboBox);
-		
-		betragComboBox = new JComboBox();
-		betragComboBox.setFont(Schrift.STANDART);
-		betragComboBox.setBounds(273, 42, 66, 20);
-		betragComboBox.setBackground(Farben.getDefaultBackgroundcolor());
-		betragComboBox.setForeground(Farben.getDefaultFontcolor());
-		betragComboBox.setBorder(Rahmen.defaultBorder);
-		editPanel.add(betragComboBox);
-		
-		titelPanel = new JPanel();
-		add(titelPanel, BorderLayout.NORTH);
-		titelPanel.setLayout(new BorderLayout(0, 0));
-		titelPanel.setBackground(Farben.getDefaultBackgroundcolor());
-		titelPanel.setForeground(Farben.getDefaultFontcolor());
-		
-		titel = new JLabel("Ausgaben");
-		titel.setFont(Schrift.TITEL);
-		titel.setHorizontalAlignment(SwingConstants.CENTER);
-		titel.setBackground(Farben.getDefaultBackgroundcolor());
-		titel.setForeground(Farben.getDefaultFontcolor());
-		titelPanel.add(titel, BorderLayout.CENTER);
-		
-		cancelButton = new JButton("< Zurück");
-		cancelButton.setFont(Schrift.STANDART);
-		cancelButton.setBorder(null);
-		cancelButton.setBackground(Farben.getDefaultBackgroundcolor());
-		cancelButton.setForeground(Farben.getDefaultFontcolor());
-		titelPanel.add(cancelButton, BorderLayout.WEST);
-		
-		addButton = new JButton("Enter");
-		addButton.setBounds(250, 242, 89, 23);
-		addButton.setFont(Schrift.STANDART);
-		addButton.setBorder(Rahmen.defaultBorder);
-		addButton.setBackground(Farben.getDefaultBackgroundcolor());
-		addButton.setForeground(Farben.getDefaultFontcolor());
-		editPanel.add(addButton);
-	}
-	
-	public void setCancelButtonActionListener(ActionListener e){
-		cancelButton.addActionListener(e);
-	}
-	
-	public void setAddButtonActionListener(ActionListener e){
-		addButton.addActionListener(e);
-	}
+    public void setAddButtonActionListener(ActionListener e) {
+        addButton.addActionListener(e);
+    }
 }
