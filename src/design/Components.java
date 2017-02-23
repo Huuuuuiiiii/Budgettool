@@ -17,14 +17,13 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.JToggleButton;
 import javax.swing.border.Border;
 
 public class Components {
     public static JLabel createImageLabel(String icon, int x, int y, int white, int higet) {
-        JLabel label = new JLabel("");
+        JLabel label = createLabel("", x, y, white, higet);
         label.setIcon(new ImageIcon(icon));
-        label.setBounds(x, y, white, higet);
-        label.setBackground(Farben.getDefaultBackgroundcolor());
         return label;
     }
 
@@ -67,4 +66,23 @@ public class Components {
         button.setBorder(Rahmen.defaultBorder);
         return button;
     }
+    
+    public static JLabel createLabel(String name, int x, int y, int white, int higet) {
+        JLabel label = new JLabel(name);
+        label.setBounds(x, y, white, higet);
+        label.setBackground(Farben.getDefaultBackgroundcolor());
+        label.setForeground(Farben.getDefaultFontcolor());
+        label.setFont(Schrift.STANDART);
+        return label;
+    }
+    
+    public static JToggleButton createToggleButton(String name) {
+    	JToggleButton toggleButton = new JToggleButton(name);
+    	toggleButton.setFont(Schrift.STANDART);
+    	toggleButton.setForeground(Farben.getDefaultFontcolor());
+    	toggleButton.setBackground(Farben.getDefaultBackgroundcolor());
+    	toggleButton.setBorder(Rahmen.defaultBorder);
+        return toggleButton;
+    }
+    
 }

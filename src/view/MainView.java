@@ -22,6 +22,7 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
+import design.Components;
 import design.Farben;
 import design.Rahmen;
 import design.Schrift;
@@ -52,14 +53,14 @@ public class MainView extends JPanel {
 		manageShortcutPanel.setBackground(Farben.getDefaultBackgroundcolor());
 		manageShortcutPanel.setLayout(new GridLayout(1, 0, 0, 0));
 		
-		removeShortcutButton = new JButton("-");
+		removeShortcutButton = Components.createButtom("-");
 		removeShortcutButton.setFont(Schrift.FETT);
 		removeShortcutButton.setForeground(Farben.getDefaultFontcolor());
 		removeShortcutButton.setBackground(Farben.getDefaultBackgroundcolor());
 		removeShortcutButton.setBorder(Rahmen.defaultBorder);
 		manageShortcutPanel.add(removeShortcutButton);
 		
-		addShortcutButton = new JButton("+");
+		addShortcutButton = Components.createButtom("+");
 		addShortcutButton.setFont(Schrift.FETT);
 		addShortcutButton.setForeground(Farben.getDefaultFontcolor());
 		addShortcutButton.setBackground(Farben.getDefaultBackgroundcolor());
@@ -85,12 +86,9 @@ public class MainView extends JPanel {
 		Titel.setForeground(Farben.getDefaultFontcolor());
 		titelPanel.add(Titel, BorderLayout.CENTER);
 		
-		menuButton = new JButton("");
-		menuButton.setBackground(UIManager.getColor("Button.disabledShadow"));
+		menuButton = Components.createButtom("");
 		menuButton.setIcon(new ImageIcon("pic/menu.png"));
 		menuButton.setBorder(null);
-		menuButton.setHorizontalAlignment(SwingConstants.RIGHT);
-		menuButton.setForeground(Farben.getDefaultFontcolor());
 		titelPanel.add(menuButton, BorderLayout.WEST);
 		
 		dayliBudgetPanel = new JPanel();
@@ -136,15 +134,13 @@ public class MainView extends JPanel {
 		erfassungsPanel.setBackground(Farben.getDefaultBackgroundcolor());
 		erfassungsPanel.setLayout(new GridLayout(1, 0, 0, 0));
 		
-		plusButton = new JButton("");
+		plusButton = Components.createButtom("");
 		plusButton.setIcon(new ImageIcon("pic/plus.png"));
-		plusButton.setBackground(Farben.getDefaultBackgroundcolor());
 		plusButton.setBorder(null);
 		erfassungsPanel.add(plusButton);
 		
-		minusButton = new JButton("");
+		minusButton = Components.createButtom("");
 		minusButton.setIcon(new ImageIcon("pic/minus.png"));
-		minusButton.setBackground(Farben.getDefaultBackgroundcolor());
 		minusButton.setBorder(null);
 		erfassungsPanel.add(minusButton);
 		
