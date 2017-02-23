@@ -7,6 +7,7 @@ import java.awt.Color;
 
 import javax.swing.JSplitPane;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -31,7 +32,7 @@ import javax.swing.JSpinner;
  * Use is subject to license terms.
  */
 
-public class Settings extends JPanel {
+public class Settings extends JPanel implements ActionListener{
 
 	private JPanel titelPanel, settingsPanel, settingsLayoutPanel, settingsAddPanel, settingsBudgetPanel, settingsKathegoriePanel;
 	private JButton cancelButton, personButton, kategorieButton;
@@ -169,59 +170,13 @@ public class Settings extends JPanel {
 		settingsLayoutPanel.setVisible(false);
 	}
 	
-	public void setCancelButtonActionListener(ActionListener e){
-		cancelButton.addActionListener(e);
-	}
-	
-	public void setPersonButtonActionListener(ActionListener e){
-		personButton.addActionListener(e);
-	}
-	
-	public void setKategorieButtonActionListener(ActionListener e){
-		kategorieButton.addActionListener(e);
-	}
-	
-	public void setdarkdesignToggleButtonActionListener(ActionListener e){
-		darkdesignToggleButton.addActionListener(e);
-	}
-	
-	public void setSettingsBudgetButtonActionListener(ActionListener e){
-		settingsBudgetButton.addActionListener(e);
-	}
-	
-	public void setSettingsViewButtonActionListener(ActionListener e){
-		settingsViewButton.addActionListener(e);
-	}
-	
-	public void setSettingsAddButtonButtonActionListener(ActionListener e){
-		settingsAddButton.addActionListener(e);
-	}
-
-	public JPanel getSettingsLayoutPanel() {
-		return settingsLayoutPanel;
-	}
-
-	public JPanel getSettingsAddPanel() {
-		return settingsAddPanel;
-	}
-
-	public JPanel getSettingsBudgetPanel() {
-		return settingsBudgetPanel;
-	}
-	
-	public JToggleButton getDarkdesignToggleButton() {
-		return darkdesignToggleButton;
-	}
-
-	public JToggleButton getSettingsBudgetButton() {
-		return settingsBudgetButton;
-	}
-
-	public JToggleButton getSettingsViewButton() {
-		return settingsViewButton;
-	}
-
-	public JToggleButton getSettingsAddButton() {
-		return settingsAddButton;
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		ViewHandler handler = new ViewHandler();
+		
+		if (e.getSource() == cancelButton){
+			this.setVisible(false);
+			handler.getMainViewPanel().setVisible(true);
+		}
 	}
 }

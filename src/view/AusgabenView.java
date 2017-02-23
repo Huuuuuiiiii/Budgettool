@@ -13,6 +13,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.LayoutManager;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -23,24 +24,13 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
-public class AusgabenView
-extends JPanel {
-    private JButton cancelButton;
-    private JButton addButton;
-    private JPanel editPanel;
-    private JPanel titelPanel;
-    private JLabel betragLabel;
-    private JLabel datumLabel;
-    private JLabel personLabel;
-    private JLabel kategorieLabel;
-    private JLabel titel;
-    private JTextField betragTextField;
-    private JSpinner daySpinner;
-    private JSpinner monthSpinner;
-    private JSpinner yearSpinner;
-    private JComboBox betragComboBox;
-    private JComboBox personComboBox;
-    private JComboBox kategorieComboBox;
+public class AusgabenView extends JPanel implements ActionListener {
+	private JButton cancelButton, addButton;
+	private JPanel editPanel, titelPanel;
+	private JLabel betragLabel, datumLabel, personLabel, kategorieLabel, titel;
+	private JTextField betragTextField;
+	private JSpinner daySpinner, monthSpinner, yearSpinner;
+	private JComboBox betragComboBox, personComboBox, kategorieComboBox;
 
     public AusgabenView() {
     	setLayout(new BorderLayout(0, 0));
@@ -106,11 +96,16 @@ extends JPanel {
         editPanel.add(this.addButton);
     }
 
-    public void setCancelButtonActionListener(ActionListener e) {
-        cancelButton.addActionListener(e);
-    }
-
-    public void setAddButtonActionListener(ActionListener e) {
-        addButton.addActionListener(e);
-    }
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		ViewHandler handler = new ViewHandler();
+		
+		if (e.getSource() == cancelButton){
+			this.setVisible(false);
+			handler.getMainViewPanel().setVisible(true);
+		}
+		if (e.getSource() == addButton){
+		
+		}
+	}
 }

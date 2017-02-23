@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
@@ -27,12 +28,13 @@ import design.Farben;
 import design.Rahmen;
 import design.Schrift;
 
-public class MainView extends JPanel {
+public class MainView extends JPanel implements ActionListener{
 
 	private JPanel mainPanel, shortcutsPanel, manageShortcutPanel, titelPanel, dayliBudgetPanel, erfassungsPanel, uebersichtPanel, monthPanel; 
 	private JButton removeShortcutButton, addShortcutButton, menuButton, plusButton, minusButton;
 	private JLabel Titel, dayliBudgetBalken, dayliBudgetLabel, monthBudgetLabel, kreisdiagrammLabel;
 	private JList shortcutlist; 
+	
 	
 	/**
 	 * Create the panel.
@@ -147,23 +149,27 @@ public class MainView extends JPanel {
 		this.setVisible(true);
 	}
 	
-	public void setMenuButtonActionListener(ActionListener e){
-		menuButton.addActionListener(e);
-	}
-	
-	public void setAddShortcutButtonActionListener(ActionListener e){
-		addShortcutButton.addActionListener(e);
-	}
-	
-	public void setRemoveShortcutButtonctionListener(ActionListener e){
-		removeShortcutButton.addActionListener(e);
-	}
-	
-	public void setMinusButtonActionListener(ActionListener e){
-		minusButton.addActionListener(e);
-	}
-	
-	public void setPlusButtonActionListener(ActionListener e){
-		plusButton.addActionListener(e);
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		ViewHandler handler = new ViewHandler();
+		
+		if (e.getSource() == menuButton){
+			System.out.println("Hallo");
+			this.setVisible(false);
+			handler.getSettingsViewPanel().setVisible(true);
+		}
+		if (e.getSource() == addShortcutButton){
+			this.setVisible(false);
+			handler.getShortcutViewPanel().setVisible(true);;
+		}
+		if (e.getSource() == minusButton){
+			this.setVisible(false);
+			handler.getAusgabeViewPanel().setVisible(true);
+		}
+		if (e.getSource() == plusButton){
+			this.setVisible(false);
+			handler.getEinnahmeViewPanel().setVisible(true);;
+		}
+		
 	}
 }

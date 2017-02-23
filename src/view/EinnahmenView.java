@@ -23,9 +23,10 @@ import java.awt.Color;
 import javax.swing.JComboBox;
 import javax.swing.JSpinner;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class EinnahmenView extends JPanel {
+public class EinnahmenView extends JPanel implements ActionListener{
 
 	private JButton cancelButton, addButton;
 	private JPanel editPanel, titelPanel;
@@ -101,11 +102,16 @@ public class EinnahmenView extends JPanel {
         editPanel.add(this.addButton);
     }
 
-	public void setCancelButtonActionListener(ActionListener e) {
-		cancelButton.addActionListener(e);
-	}
-
-	public void setAddButtonActionListener(ActionListener e) {
-		addButton.addActionListener(e);
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		ViewHandler handler = new ViewHandler();
+		
+		if (e.getSource() == cancelButton){
+			this.setVisible(false);
+			handler.getMainViewPanel().setVisible(true);
+		}
+		if (e.getSource() == addButton){
+		
+		}
 	}
 }
