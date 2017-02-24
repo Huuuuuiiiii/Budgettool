@@ -12,7 +12,7 @@ public class Farben {
 
 	private static Color defaultBackgroundcolor;
 	private static Color defaultFontcolor;
-	private static boolean darkdesign = true;
+	private static boolean darkdesign = false;
 	
 	/**
 	 * reteun whether darkdesin is akrive or not

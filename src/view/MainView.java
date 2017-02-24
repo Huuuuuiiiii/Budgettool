@@ -8,6 +8,8 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,6 +29,7 @@ import design.Components;
 import design.Farben;
 import design.Rahmen;
 import design.Schrift;
+import diagramm.Balkendiagramm;
 import diagramm.Kreisdiagramm;
 
 public class MainView extends JPanel implements ActionListener{
@@ -99,10 +102,9 @@ public class MainView extends JPanel implements ActionListener{
 		dayliBudgetPanel.setBackground(Farben.getDefaultBackgroundcolor());
 		dayliBudgetPanel.setLayout(new BorderLayout(0, 0));
 		
-		dayliBudgetBalken = new JLabel("Balken");
-		dayliBudgetPanel.add(dayliBudgetBalken, BorderLayout.CENTER);
-		dayliBudgetBalken.setHorizontalAlignment(SwingConstants.CENTER);
-		dayliBudgetBalken.setForeground(Farben.getDefaultFontcolor());
+		Balkendiagramm balken = new Balkendiagramm(200, 1000);
+		balken.setPreferredSize(new Dimension(0, balken.getHeight()));
+		dayliBudgetPanel.add(balken, BorderLayout.CENTER);
 		
 		dayliBudgetLabel = new JLabel("Heute verfägbar");
 		dayliBudgetPanel.add(dayliBudgetLabel, BorderLayout.NORTH);
@@ -118,11 +120,11 @@ public class MainView extends JPanel implements ActionListener{
 		
 		monthBudgetLabel = new JLabel("Restbetrag");
 		monthBudgetLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		monthBudgetLabel.setFont(Schrift.STANDART);
+		monthBudgetLabel.setFont(Schrift.UBERSCHRIFT);
 		monthBudgetLabel.setForeground(Farben.getDefaultFontcolor());
 		monthPanel.add(monthBudgetLabel, BorderLayout.NORTH);
 		
-		monthPanel.add(new Kreisdiagramm(13,30), BorderLayout.CENTER);
+		monthPanel.add(new Kreisdiagramm(50,20), BorderLayout.CENTER);
 		
 		erfassungsPanel = new JPanel();
 		monthPanel.add(erfassungsPanel, BorderLayout.SOUTH);
@@ -148,6 +150,16 @@ public class MainView extends JPanel implements ActionListener{
 		this.setVisible(true);
 	}
 	
+	private Component balken(int i, int j) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private Component Balkendiagramm(int i, int j) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		

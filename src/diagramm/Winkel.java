@@ -8,12 +8,12 @@ package diagramm;
 import java.awt.Color;
 import java.util.ArrayList;
 
-public class Diagramm {
+public class Winkel {
 	
 	 private double value;
 	 private Color color;
 	 
-	 public Diagramm(Double value, Color color) {
+	 public Winkel(Double value, Color color) {
 		      this.value = value;
 		      this.color = color;
 	}
