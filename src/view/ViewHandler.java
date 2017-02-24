@@ -70,4 +70,8 @@ public class ViewHandler {
 	public AusgabenView getAusgabeViewPanel() {
 		return ausgabeViewPanel;
 	}
+
+	public JPanel getMainPanel() {
+		return mainPanel;
+	}
 }

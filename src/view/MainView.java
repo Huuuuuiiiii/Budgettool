@@ -27,13 +27,14 @@ import design.Components;
 import design.Farben;
 import design.Rahmen;
 import design.Schrift;
+import diagramm.Kreisdiagramm;
 
 public class MainView extends JPanel implements ActionListener{
 
 	private JPanel mainPanel, shortcutsPanel, manageShortcutPanel, titelPanel, dayliBudgetPanel, erfassungsPanel, uebersichtPanel, monthPanel; 
 	private JButton removeShortcutButton, addShortcutButton, menuButton, plusButton, minusButton;
 	private JLabel Titel, dayliBudgetBalken, dayliBudgetLabel, monthBudgetLabel, kreisdiagrammLabel;
-	private JList shortcutlist; 
+	private JList shortcutlist;
 	
 	
 	/**
@@ -113,26 +114,18 @@ public class MainView extends JPanel implements ActionListener{
 		add(monthPanel, BorderLayout.CENTER);
 		monthPanel.setBackground(Farben.getDefaultBackgroundcolor());
 		monthPanel.setLayout(new BorderLayout(0, 0));
+		monthPanel.setBorder(new EmptyBorder(50, 10, 30, 10));
 		
 		monthBudgetLabel = new JLabel("Restbetrag");
 		monthBudgetLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		monthBudgetLabel.setFont(Schrift.STANDART);
 		monthBudgetLabel.setForeground(Farben.getDefaultFontcolor());
-		monthPanel.add(monthBudgetLabel, BorderLayout.SOUTH);
+		monthPanel.add(monthBudgetLabel, BorderLayout.NORTH);
 		
-		uebersichtPanel = new JPanel();
-		uebersichtPanel.setBackground(Farben.getDefaultBackgroundcolor());
-		monthPanel.add(uebersichtPanel, BorderLayout.CENTER);
-		uebersichtPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
-		uebersichtPanel.setLayout(new BorderLayout(0, 0));
-		
-		kreisdiagrammLabel = new JLabel("Kreisdiagramm");
-		uebersichtPanel.add(kreisdiagrammLabel);
-		kreisdiagrammLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		kreisdiagrammLabel.setForeground(Farben.getDefaultFontcolor());
+		monthPanel.add(new Kreisdiagramm(13,30), BorderLayout.CENTER);
 		
 		erfassungsPanel = new JPanel();
-		uebersichtPanel.add(erfassungsPanel, BorderLayout.NORTH);
+		monthPanel.add(erfassungsPanel, BorderLayout.SOUTH);
 		erfassungsPanel.setBackground(Farben.getDefaultBackgroundcolor());
 		erfassungsPanel.setLayout(new GridLayout(1, 0, 0, 0));
 		
@@ -146,17 +139,21 @@ public class MainView extends JPanel implements ActionListener{
 		minusButton.setBorder(null);
 		erfassungsPanel.add(minusButton);
 		
+		minusButton.addActionListener(this);
+		plusButton.addActionListener(this);
+		removeShortcutButton.addActionListener(this);
+		addShortcutButton.addActionListener(this);
+		menuButton.addActionListener(this);
+		
 		this.setVisible(true);
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		ViewHandler handler = new ViewHandler();
 		
+		ViewHandler handler = new ViewHandler();
 		if (e.getSource() == menuButton){
-			System.out.println("Hallo");
-			this.setVisible(false);
-			handler.getSettingsViewPanel().setVisible(true);
+			
 		}
 		if (e.getSource() == addShortcutButton){
 			this.setVisible(false);
