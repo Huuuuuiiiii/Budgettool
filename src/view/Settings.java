@@ -82,7 +82,7 @@ public class Settings extends JPanel implements ActionListener{
 		settingsPanel.add(settingsLayoutPanel, "name_3361411458953");
 		settingsLayoutPanel.setLayout(null);
 		
-		darkdesignLabel = Components.createLabel("Durkdesign", 20, 36, 100, 14);
+		darkdesignLabel = Components.createLabel("Dark Design", 20, 36, 100, 14);
 		settingsLayoutPanel.add(darkdesignLabel);
 		
 		darkdesignToggleButton = Components.createToggleButton("ON / OF");
@@ -124,7 +124,7 @@ public class Settings extends JPanel implements ActionListener{
 		settingsPanel.add(settingsBudgetPanel, "name_3368500105902");
 		settingsBudgetPanel.setLayout(null);
 		
-		waerungLabel = Components.createLabel("Wärung", 20, 36, 100, 14);
+		waerungLabel = Components.createLabel("Währung", 20, 36, 100, 14);
 		settingsBudgetPanel.add(waerungLabel);
 		
 		mothBudgetLabel = Components.createLabel("Monatsbudget", 20, 76, 100, 14);

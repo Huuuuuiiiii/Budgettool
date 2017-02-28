@@ -15,22 +15,22 @@ public class Farben {
 	private static boolean darkdesign = false;
 	
 	/**
-	 * reteun whether darkdesin is akrive or not
-	 * @return Durkdesign
+	 * reteun whether darkdesign is aktive or not
+	 * @return Darkdesign
 	 */
 	public static boolean isDarkdesign() {
 		return darkdesign;
 	}
 	
 	/**
-	 * Change the design vom Normal to Dark and the other way around.
+	 * Change the design from Normal to Dark and the other way around.
 	 */
 	public static void setDarkdesign(boolean darkdesign) {
 		Farben.darkdesign = darkdesign;
 	}
 	
 	/**
-	 * Return the coler of Background with take darkdesign into account
+	 * Return the color of the Background with take darkdesign into account
 	 * @return Backgroundcolor
 	 */
 	public static Color getDefaultBackgroundcolor() {
@@ -47,7 +47,7 @@ public class Farben {
 	}
 	
 	/**
-	 * Return the coler of Font with take darkdesign into account
+	 * Return the color of Font with take darkdesign into account
 	 * @return Font
 	 */
 	public static Color getDefaultFontcolor() {

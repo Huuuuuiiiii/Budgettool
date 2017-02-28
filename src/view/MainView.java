@@ -106,7 +106,7 @@ public class MainView extends JPanel implements ActionListener{
 		balken.setPreferredSize(new Dimension(0, balken.getHeight()));
 		dayliBudgetPanel.add(balken, BorderLayout.CENTER);
 		
-		dayliBudgetLabel = new JLabel("Heute verfägbar");
+		dayliBudgetLabel = new JLabel("Heute verfügbar");
 		dayliBudgetPanel.add(dayliBudgetLabel, BorderLayout.NORTH);
 		dayliBudgetLabel.setFont(Schrift.UBERSCHRIFT);
 		dayliBudgetLabel.setForeground(Farben.getDefaultFontcolor());

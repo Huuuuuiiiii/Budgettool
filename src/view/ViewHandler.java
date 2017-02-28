@@ -42,7 +42,7 @@ public class ViewHandler {
 		mainPanel.add(einnahmeViewPanel, "Einnahmen");
 		mainPanel.add(ausgabeViewPanel, "Ausgaben");
 		mainPanel.add(shortcutViewPanel, "Shortcut");
-		mainPanel.add(settingsViewPanel, "Settings");	
+		mainPanel.add(settingsViewPanel, "Einstellungen");	
 		
 		frame.setVisible(true);
 	}
