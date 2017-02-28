@@ -34,12 +34,16 @@ public class ShortcutView extends JPanel implements ActionListener{
 	private JTextField betragTextField, nameTextField;
 	private JSpinner daySpinner, monthSpinner, yearSpinner;
 	private JComboBox betragComboBox, personComboBox, kategorieComboBox;
+	private ViewHandler mainPanel;
 	
 
 	/**
 	 * Create the panel.
 	 */
-	public ShortcutView() {
+	public ShortcutView(ViewHandler mainPanel) {
+		
+		this.mainPanel = mainPanel;
+		
 		setLayout(new BorderLayout(0, 0));
         setBorder(new EmptyBorder(10, 10, 10, 10));
         setBackground(Farben.getDefaultBackgroundcolor());
@@ -59,6 +63,7 @@ public class ShortcutView extends JPanel implements ActionListener{
         
         cancelButton = Components.createButtom("< Zurück");
         titelPanel.add(cancelButton,  BorderLayout.WEST);
+        cancelButton.addActionListener(this);
         
         editPanel = new JPanel();
         add(editPanel, BorderLayout.CENTER);
@@ -71,7 +76,7 @@ public class ShortcutView extends JPanel implements ActionListener{
         betragLabel = Components.createImageLabel("pic/money.png", 67, 83, 40, 40);
         editPanel.add(betragLabel);
         
-        kategorieLabel = Components.createImageLabel("pic/money.png", 67, 83, 40, 40);
+        kategorieLabel = Components.createImageLabel("pic/folder.png", 67, 133, 40, 40);
         editPanel.add(kategorieLabel);
         
         datumLabel = Components.createImageLabel("pic/calendar.png", 67, 183, 40, 40);
@@ -111,14 +116,14 @@ public class ShortcutView extends JPanel implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		ViewHandler handler = new ViewHandler();
 		
 		if (e.getSource() == cancelButton){
-			this.setVisible(false);
-			handler.getMainViewPanel().setVisible(true);
+			mainPanel.getShortcutViewPanel().setVisible(false);
+			mainPanel.getMainViewPanel().setVisible(true);
 		}
 		if (e.getSource() == addButton){
-		
+			this.setVisible(false);
+			mainPanel.getMainViewPanel().setVisible(true);
 		}
 	}
 }

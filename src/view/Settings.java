@@ -42,11 +42,14 @@ public class Settings extends JPanel implements ActionListener{
 	private JTextField personTextField, kategorieTextField, mothBudgetTextField;
 	private JComboBox zyklusComboBox, mothBudgetComboBox, waerungComboBox;
 	private JSpinner finazMothSpinner;
+	private ViewHandler mainPanel;
 
 	/**
 	 * Create the panel.
 	 */
-	public Settings() {
+	public Settings(ViewHandler mainPanel) {
+		
+		this.mainPanel = mainPanel;
 		setBackground(Farben.getDefaultBackgroundcolor());
 		setLayout(new BorderLayout(0, 0));
 		setBorder(new EmptyBorder(10, 10, 10, 10));
@@ -66,6 +69,7 @@ public class Settings extends JPanel implements ActionListener{
 		
 		cancelButton = Components.createButtom("< Zurück");
 		titelPanel.add(cancelButton, BorderLayout.WEST);
+		cancelButton.addActionListener(this);
 		
 		splitPane = new JSplitPane();
 		splitPane.setBackground(Farben.getDefaultBackgroundcolor());
@@ -158,25 +162,56 @@ public class Settings extends JPanel implements ActionListener{
 		
 		settingsViewButton = Components.createToggleButton("View");
 		settingsKathegoriePanel.add(settingsViewButton);
+		settingsViewButton.addActionListener(this);
 		
 		settingsAddButton = Components.createToggleButton("Add");
 		settingsKathegoriePanel.add(settingsAddButton);
+		settingsAddButton.addActionListener(this);
 	
 		settingsBudgetButton = Components.createToggleButton("Budget");
 		settingsKathegoriePanel.add(settingsBudgetButton);
-
-		settingsAddPanel.setVisible(true);
-		settingsBudgetPanel.setVisible(false);
-		settingsLayoutPanel.setVisible(false);
+		settingsBudgetButton.addActionListener(this);
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		ViewHandler handler = new ViewHandler();
 		
 		if (e.getSource() == cancelButton){
 			this.setVisible(false);
-			handler.getMainViewPanel().setVisible(true);
+			mainPanel.getMainViewPanel().setVisible(true);
 		}
+		
+		if (e.getSource() == settingsAddButton){
+			setSettingsViewPanelVisible(false);
+			setsettingsBudgetPanelVisible(false);
+			setsettingsAddPanelVisible(true);
+		}
+		
+		else if (e.getSource() == settingsViewButton){
+			setSettingsViewPanelVisible(true);
+			setsettingsBudgetPanelVisible(false);
+			setsettingsAddPanelVisible(false);
+		}
+		
+		else if (e.getSource() == settingsBudgetButton){
+			setSettingsViewPanelVisible(false);
+			setsettingsBudgetPanelVisible(true);
+			setsettingsAddPanelVisible(false);
+		}
+	}
+	
+	private void setSettingsViewPanelVisible(boolean visible){
+		settingsLayoutPanel.setVisible(visible);
+		settingsViewButton.setSelected(visible);
+	}
+	
+	private void setsettingsAddPanelVisible(boolean visible){
+		settingsAddPanel.setVisible(visible);
+		settingsAddButton.setSelected(visible);
+	}
+	
+	private void setsettingsBudgetPanelVisible(boolean visible){
+		settingsBudgetPanel.setVisible(visible);
+		settingsBudgetButton.setSelected(visible);
 	}
 }

@@ -30,6 +30,7 @@ public class EinnahmenView extends JPanel implements ActionListener{
 
 	private JButton cancelButton, addButton;
 	private JPanel editPanel, titelPanel;
+	private ViewHandler mainPanel;
 	private JLabel betragLabel, datumLabel, personLabel, kategorieLabel, titel;
 	private JTextField betragTextField;
 	private JSpinner daySpinner, monthSpinner, yearSpinner;
@@ -38,7 +39,10 @@ public class EinnahmenView extends JPanel implements ActionListener{
 	/**
 	 * Create the panel.
 	 */
-	public EinnahmenView() {
+	public EinnahmenView(ViewHandler mainPanel) {
+		
+		this.mainPanel = mainPanel;
+		
 		setLayout(new BorderLayout(0, 0));
         setBorder(new EmptyBorder(10, 10, 10, 10));
         setBackground(Farben.getDefaultBackgroundcolor());
@@ -49,7 +53,7 @@ public class EinnahmenView extends JPanel implements ActionListener{
         titelPanel.setLayout(new BorderLayout(0, 0));
         titelPanel.setBackground(Farben.getDefaultBackgroundcolor());
         
-        titel = new JLabel("Shortcut");
+        titel = new JLabel("Einnahmen");
         titel.setFont(Schrift.TITEL);
         titel.setHorizontalAlignment(0);
         titel.setBackground(Farben.getDefaultBackgroundcolor());
@@ -58,6 +62,7 @@ public class EinnahmenView extends JPanel implements ActionListener{
         
         cancelButton = Components.createButtom("< Zurück");
         titelPanel.add(cancelButton,  BorderLayout.WEST);
+        cancelButton.addActionListener(this);
         
         editPanel = new JPanel();
         add(editPanel, BorderLayout.CENTER);
@@ -104,14 +109,16 @@ public class EinnahmenView extends JPanel implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		ViewHandler handler = new ViewHandler();
 		
 		if (e.getSource() == cancelButton){
 			this.setVisible(false);
-			handler.getMainViewPanel().setVisible(true);
+			System.out.println();
+			mainPanel.getMainViewPanel().setVisible(true);
+			mainPanel.getEinnahmeViewPanel().setVisible(false);
 		}
 		if (e.getSource() == addButton){
-		
+			this.setVisible(false);
+			mainPanel.getMainViewPanel().setVisible(true);
 		}
 	}
 }

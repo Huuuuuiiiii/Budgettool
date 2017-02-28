@@ -31,8 +31,12 @@ public class AusgabenView extends JPanel implements ActionListener {
 	private JTextField betragTextField;
 	private JSpinner daySpinner, monthSpinner, yearSpinner;
 	private JComboBox betragComboBox, personComboBox, kategorieComboBox;
+	private ViewHandler mainPanel;
 
-    public AusgabenView() {
+    public AusgabenView(ViewHandler mainPanel) {
+    	
+    	this.mainPanel = mainPanel;
+    	
     	setLayout(new BorderLayout(0, 0));
         setBorder(new EmptyBorder(10, 10, 10, 10));
         setBackground(Farben.getDefaultBackgroundcolor());
@@ -43,7 +47,7 @@ public class AusgabenView extends JPanel implements ActionListener {
         titelPanel.setLayout(new BorderLayout(0, 0));
         titelPanel.setBackground(Farben.getDefaultBackgroundcolor());
         
-        titel = new JLabel("Shortcut");
+        titel = new JLabel("Ausgaben");
         titel.setFont(Schrift.TITEL);
         titel.setHorizontalAlignment(0);
         titel.setBackground(Farben.getDefaultBackgroundcolor());
@@ -52,6 +56,7 @@ public class AusgabenView extends JPanel implements ActionListener {
         
         cancelButton = Components.createButtom("< Zurück");
         titelPanel.add(cancelButton,  BorderLayout.WEST);
+        cancelButton.addActionListener(this);
         
         editPanel = new JPanel();
         add(editPanel, BorderLayout.CENTER);
@@ -98,14 +103,14 @@ public class AusgabenView extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		ViewHandler handler = new ViewHandler();
 		
 		if (e.getSource() == cancelButton){
 			this.setVisible(false);
-			handler.getMainViewPanel().setVisible(true);
+			mainPanel.getMainViewPanel().setVisible(true);
 		}
 		if (e.getSource() == addButton){
-		
+			this.setVisible(false);
+			mainPanel.getMainViewPanel().setVisible(true);
 		}
 	}
 }

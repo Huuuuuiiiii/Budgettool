@@ -11,32 +11,30 @@ import java.awt.Color;
  * Use is subject to license terms.
  */
 
-public class ViewHandler {
+public class ViewHandler extends JFrame{
 
-	private JFrame frame;
 	private JPanel mainPanel;
-	private MainView mainViewPanel = new MainView();
-	private ShortcutView shortcutViewPanel = new ShortcutView();
-	private Settings settingsViewPanel = new Settings();
-	private EinnahmenView einnahmeViewPanel = new EinnahmenView();
-	private AusgabenView ausgabeViewPanel = new AusgabenView();
-	private Farben farben = new Farben();
+	private MainView mainViewPanel = new MainView(this);
+	private ShortcutView shortcutViewPanel = new ShortcutView(this);
+	private Settings settingsViewPanel = new Settings(this);
+	private EinnahmenView einnahmeViewPanel = new EinnahmenView(this);
+	private AusgabenView ausgabeViewPanel = new AusgabenView(this);
 	
 	/**
 	 * Create the application.
 	 */
 	public ViewHandler() {
 		
-		frame = new JFrame();
-		frame.getContentPane().setBackground(Color.WHITE);
-		frame.setBounds(100, 100, 505, 502);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new CardLayout(0, 0));
+		this.getContentPane().setBackground(Color.WHITE);
+		this.setBounds(100, 100, 505, 502);
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.getContentPane().setLayout(new CardLayout(0, 0));
 		
 		mainPanel = new JPanel();
 		mainPanel.setBackground(Farben.getDefaultBackgroundcolor());
-		frame.getContentPane().add(mainPanel, "name_4264670569464");
+		this.getContentPane().add(mainPanel, "name_4264670569464");
 		mainPanel.setLayout(new CardLayout(0, 0));
+		
 		
 		mainPanel.add(mainViewPanel, "MainView");
 		mainPanel.add(einnahmeViewPanel, "Einnahmen");
@@ -44,34 +42,34 @@ public class ViewHandler {
 		mainPanel.add(shortcutViewPanel, "Shortcut");
 		mainPanel.add(settingsViewPanel, "Einstellungen");	
 		
-		frame.setVisible(true);
+		this.setVisible(true);
 	}
 
 	public MainView getMainViewPanel() {
-		return mainViewPanel;
+		return this.mainViewPanel;
 	}
 
 
 	public ShortcutView getShortcutViewPanel() {
-		return shortcutViewPanel;
+		return this.shortcutViewPanel;
 	}
 
 
 	public Settings getSettingsViewPanel() {
-		return settingsViewPanel;
+		return this.settingsViewPanel;
 	}
 
 
 	public EinnahmenView getEinnahmeViewPanel() {
-		return einnahmeViewPanel;
+		return this.einnahmeViewPanel;
 	}
 
 
 	public AusgabenView getAusgabeViewPanel() {
-		return ausgabeViewPanel;
+		return this.ausgabeViewPanel;
 	}
 
 	public JPanel getMainPanel() {
-		return mainPanel;
+		return this.mainPanel;
 	}
 }
