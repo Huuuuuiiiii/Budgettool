@@ -28,11 +28,10 @@ public class ViewHandler extends JFrame{
 		this.getContentPane().setBackground(Color.WHITE);
 		this.setBounds(100, 100, 505, 502);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.getContentPane().setLayout(new CardLayout(0, 0));
 		
 		mainPanel = new JPanel();
 		mainPanel.setBackground(Farben.getDefaultBackgroundcolor());
-		this.getContentPane().add(mainPanel, "name_4264670569464");
+		this.getContentPane().add(mainPanel);
 		mainPanel.setLayout(new CardLayout(0, 0));
 		
 		
