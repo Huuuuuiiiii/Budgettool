@@ -34,7 +34,7 @@ public class Components {
         textField.setBounds(x, y, white, higet);
         textField.setForeground(Farben.getDefaultFontcolor());
         textField.setBackground(Farben.getDefaultBackgroundcolor());
-        textField.setBorder(Rahmen.defaultBorder);
+        textField.setBorder(Rahmen.roundedBorder);
         return textField;
     }
 
@@ -44,7 +44,6 @@ public class Components {
         comboBox.setBounds(x, y, white, higet);
         comboBox.setForeground(Farben.getDefaultFontcolor());
         comboBox.setBackground(Farben.getDefaultBackgroundcolor());
-        comboBox.setBorder(Rahmen.defaultBorder);
         return comboBox;
     }
 
@@ -54,7 +53,6 @@ public class Components {
         spinner.setBounds(x, y, white, higet);
         spinner.setForeground(Farben.getDefaultFontcolor());
         spinner.setBackground(Farben.getDefaultBackgroundcolor());
-        spinner.setBorder(Rahmen.defaultBorder);
         return spinner;
     }
 
@@ -63,7 +61,7 @@ public class Components {
         button.setFont(Schrift.STANDART);
         button.setForeground(Farben.getDefaultFontcolor());
         button.setBackground(Farben.getDefaultBackgroundcolor());
-        button.setBorder(Rahmen.defaultBorder);
+        button.setBorder(null);
         return button;
     }
     
@@ -81,7 +79,6 @@ public class Components {
     	toggleButton.setFont(Schrift.STANDART);
     	toggleButton.setForeground(Farben.getDefaultFontcolor());
     	toggleButton.setBackground(Farben.getDefaultBackgroundcolor());
-    	toggleButton.setBorder(Rahmen.defaultBorder);
         return toggleButton;
     }
     

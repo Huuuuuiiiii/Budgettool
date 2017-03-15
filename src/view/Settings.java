@@ -161,14 +161,17 @@ public class Settings extends JPanel implements ActionListener{
 		settingsKathegoriePanel.setLayout(new GridLayout(10, 1, 0, 0));
 		
 		settingsViewButton = Components.createToggleButton("View");
+		settingsViewButton.setBorder(Rahmen.defaultBorder);
 		settingsKathegoriePanel.add(settingsViewButton);
 		settingsViewButton.addActionListener(this);
 		
 		settingsAddButton = Components.createToggleButton("Add");
+		settingsAddButton.setBorder(Rahmen.defaultBorder);
 		settingsKathegoriePanel.add(settingsAddButton);
 		settingsAddButton.addActionListener(this);
 	
 		settingsBudgetButton = Components.createToggleButton("Budget");
+		settingsBudgetButton.setBorder(Rahmen.defaultBorder);
 		settingsKathegoriePanel.add(settingsBudgetButton);
 		settingsBudgetButton.addActionListener(this);
 	}
