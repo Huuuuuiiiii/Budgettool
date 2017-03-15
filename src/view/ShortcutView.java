@@ -111,6 +111,7 @@ public class ShortcutView extends JPanel implements ActionListener{
         
         addButton = Components.createButtom("Enter");
         addButton.setBounds(250, 292, 89, 23);
+        addButton.setBorder(Rahmen.roundedBorder);
         editPanel.add(addButton);
     }
 	

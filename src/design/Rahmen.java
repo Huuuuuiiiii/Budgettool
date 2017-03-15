@@ -9,11 +9,10 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.border.*;
 
+import view.RoundedBorder;
+
 public class Rahmen {
 	
 	public static Border defaultBorder = BorderFactory.createLineBorder(Color.lightGray);
-
-	public static void setDefaultBorder(Border defaultBorder) {
-		Rahmen.defaultBorder = defaultBorder;
-	}
+	public static Border roundedBorder = new RoundedBorder(10);
 }
