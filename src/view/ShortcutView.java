@@ -32,7 +32,7 @@ public class ShortcutView extends JPanel implements ActionListener{
 	private JPanel editPanel, titelPanel;
 	private JLabel betragLabel, datumLabel, personLabel, kategorieLabel, titel, nameLabel;
 	private JTextField betragTextField, nameTextField;
-	private JSpinner daySpinner, monthSpinner, yearSpinner;
+//	private JSpinner daySpinner, monthSpinner, yearSpinner;
 	private JComboBox betragComboBox, personComboBox, kategorieComboBox;
 	private ViewHandler mainPanel;
 	
@@ -79,10 +79,10 @@ public class ShortcutView extends JPanel implements ActionListener{
         kategorieLabel = Components.createImageLabel("pic/folder.png", 67, 133, 40, 40);
         editPanel.add(kategorieLabel);
         
-        datumLabel = Components.createImageLabel("pic/calendar.png", 67, 183, 40, 40);
-        editPanel.add(datumLabel);
+//        datumLabel = Components.createImageLabel("pic/calendar.png", 67, 183, 40, 40);
+//        editPanel.add(datumLabel);
         
-        personLabel = Components.createImageLabel("pic/person.png", 67, 233, 40, 40);
+        personLabel = Components.createImageLabel("pic/person.png", 67, 183, 40, 40);
         editPanel.add(personLabel);
         
         nameTextField = Components.createTextField("", 147, 42, 155, 20);
@@ -97,16 +97,16 @@ public class ShortcutView extends JPanel implements ActionListener{
         kategorieComboBox = Components.createComboBox(147, 142, 155, 20);
         editPanel.add(kategorieComboBox);
         
-        daySpinner = Components.createSpinner(147, 192, 40, 20);
-        editPanel.add(daySpinner);
+//        daySpinner = Components.createSpinner(147, 192, 40, 20);
+//        editPanel.add(daySpinner);
+//        
+//        monthSpinner = Components.createSpinner(197, 192, 40, 20);
+//        editPanel.add(monthSpinner);
+//        
+//        yearSpinner = Components.createSpinner(247, 192, 55, 20);
+//        editPanel.add(yearSpinner);
         
-        monthSpinner = Components.createSpinner(197, 192, 40, 20);
-        editPanel.add(monthSpinner);
-        
-        yearSpinner = Components.createSpinner(247, 192, 55, 20);
-        editPanel.add(yearSpinner);
-        
-        personComboBox = Components.createComboBox(148, 242, 154, 20);
+        personComboBox = Components.createComboBox(147, 192, 154, 20);
         editPanel.add(personComboBox);
         
         addButton = Components.createButtom("Enter");

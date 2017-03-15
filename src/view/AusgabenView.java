@@ -9,10 +9,7 @@ import design.Components;
 import design.Farben;
 import design.Schrift;
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Font;
-import java.awt.LayoutManager;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -21,8 +18,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
-import javax.swing.border.Border;
+import javax.swing.SpinnerDateModel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JSpinner.DateEditor;
+import java.util.Date;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class AusgabenView extends JPanel implements ActionListener {
 	private JButton cancelButton, addButton;
@@ -32,9 +33,32 @@ public class AusgabenView extends JPanel implements ActionListener {
 	private JSpinner daySpinner, monthSpinner, yearSpinner;
 	private JComboBox betragComboBox, personComboBox, kategorieComboBox;
 	private ViewHandler mainPanel;
-
     public AusgabenView(ViewHandler mainPanel) {
     	
+//Datumsfeld beginn
+    	
+//    	 final SpinnerDateModel sdm = new SpinnerDateModel();
+//    	 final JSpinner spinner = new JSpinner(sdm);
+//    	 spinner.setEditor(new DateEditor(spinner,"dd.MM.yyyy"));
+//    	 
+//    	 spinner.addChangeListener(new ChangeListener(){
+//
+//    		public void stateChanged(ChangeEvent arg0){
+//    			Date fromSpinner = (Date) spinner.getValue();
+//    			Date fromModel = sdm.getDate();
+//    			System.out.println(fromSpinner + " or " + fromModel);
+//    		}
+//    	 });
+//
+//    	 setPreferredSize(new Dimension(147, 192));
+//    	 editPanel.add(spinner);
+//    	 editPanel.add(this.add(spinner));
+//    	 
+//    	 setVisible(true);
+    	 
+        
+//Datumsfeld ende
+        
     	this.mainPanel = mainPanel;
     	
     	setLayout(new BorderLayout(0, 0));
@@ -84,14 +108,14 @@ public class AusgabenView extends JPanel implements ActionListener {
         kategorieComboBox = Components.createComboBox(147, 142, 155, 20);
         editPanel.add(this.kategorieComboBox);
         
-        daySpinner = Components.createSpinner(147, 192, 40, 20);
+        daySpinner = Components.createSpinner(147, 192, 100, 20);
         editPanel.add(this.daySpinner);
         
-        monthSpinner = Components.createSpinner(197, 192, 40, 20);
-        editPanel.add(this.monthSpinner);
+       // monthSpinner = Components.createSpinner(197, 192, 40, 20);
+       // editPanel.add(this.monthSpinner);
         
-        yearSpinner = Components.createSpinner(247, 192, 55, 20);
-        editPanel.add(this.yearSpinner);
+       // yearSpinner = Components.createSpinner(247, 192, 55, 20);
+       // editPanel.add(this.yearSpinner);
         
         personComboBox = Components.createComboBox(148, 242, 154, 20);
         editPanel.add(this.personComboBox);
