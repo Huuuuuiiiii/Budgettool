@@ -90,14 +90,14 @@ public class EinnahmenView extends JPanel implements ActionListener{
         kategorieComboBox = Components.createComboBox(147, 142, 155, 20);
         editPanel.add(this.kategorieComboBox);
         
-        daySpinner = Components.createSpinner(147, 192, 40, 20);
+        daySpinner = Components.createSpinner(147, 192, 100, 20);
         editPanel.add(this.daySpinner);
         
-        monthSpinner = Components.createSpinner(197, 192, 40, 20);
-        editPanel.add(this.monthSpinner);
-        
-        yearSpinner = Components.createSpinner(247, 192, 55, 20);
-        editPanel.add(this.yearSpinner);
+//        monthSpinner = Components.createSpinner(197, 192, 40, 20);
+//        editPanel.add(this.monthSpinner);
+//        
+//        yearSpinner = Components.createSpinner(247, 192, 55, 20);
+//        editPanel.add(this.yearSpinner);
         
         personComboBox = Components.createComboBox(148, 242, 154, 20);
         editPanel.add(this.personComboBox);
