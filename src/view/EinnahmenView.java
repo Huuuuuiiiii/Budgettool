@@ -72,7 +72,7 @@ public class EinnahmenView extends JPanel implements ActionListener{
         betragLabel = Components.createImageLabel("pic/money.png", 67, 83, 40, 40);
         editPanel.add(this.betragLabel);
         
-        kategorieLabel = Components.createImageLabel("pic/money.png", 67, 83, 40, 40);
+        kategorieLabel = Components.createImageLabel("pic/folder.png", 67, 133, 40, 40);
         editPanel.add(this.kategorieLabel);
         
         datumLabel = Components.createImageLabel("pic/calendar.png", 67, 183, 40, 40);
