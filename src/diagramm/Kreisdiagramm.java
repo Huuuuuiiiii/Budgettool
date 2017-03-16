@@ -13,8 +13,9 @@ public class Kreisdiagramm extends JComponent {
 	
 	public Kreisdiagramm(double ausgaben, double restbetrag) {
 		Winkel[] slices = { 
-				new Winkel(ausgaben, new Color(248, 69, 69)), 
-				new Winkel(restbetrag, new Color(45, 203, 112))
+				new Winkel(restbetrag, new Color(45, 203, 112)),
+				new Winkel(ausgaben, new Color(248, 69, 69))
+				
 		};
 		this.slices = slices;
 	}
@@ -25,7 +26,7 @@ public class Kreisdiagramm extends JComponent {
    
 	private void drawPie(Graphics2D g, Rectangle area, Winkel[] slices) {
 		double total = 0.0;
-		double curValue = 0.0;
+		double curValue = 90.0;
 		int startAngle = 0;
 		int groesse;
 		
