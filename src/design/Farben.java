@@ -9,7 +9,8 @@ import java.awt.Color;
 import java.awt.Font;
 
 public class Farben {
-
+	
+	
 	private static Color defaultBackgroundcolor;
 	private static Color defaultFontcolor;
 	private static boolean darkdesign = false;
