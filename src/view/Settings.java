@@ -202,7 +202,7 @@ public class Settings extends JPanel implements ActionListener{
 			setsettingsAddPanelVisible(false);
 		}
 	}
-	//ToDo Button für 
+	//ToDo Button für Darkdesign
 		public void actionPerfomed(ActionEvent a){
 			if (a.getSource() == darkdesignToggleButton){
 				System.out.println("Änderung in dunkels Design");
