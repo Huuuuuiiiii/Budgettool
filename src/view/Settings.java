@@ -38,8 +38,8 @@ public class Settings extends JPanel implements ActionListener {
 			settingsKathegoriePanel;
 	private JButton cancelButton, personButton, kategorieButton;
 	private JSplitPane splitPane;
-	private JLabel darkdesignLabel, personLabel, namePersonLabel, waerungLabel, finanzMonth, monthBudget,
-			zyklusLabel, kategorieNameLabel, kategorieLabel, Titel;
+	private JLabel darkdesignLabel, personLabel, namePersonLabel, waerungLabel, finanzMonth, monthBudget, zyklusLabel,
+			kategorieNameLabel, kategorieLabel, Titel;
 	private JToggleButton darkdesignToggleButton, settingsBudgetButton, settingsViewButton, settingsAddButton;
 	private JTextField personTextField, kategorieTextField, monthBudgetTextField;
 	private JComboBox zyklusComboBox, monthBudgetComboBox, waerungComboBox;
@@ -193,13 +193,14 @@ public class Settings extends JPanel implements ActionListener {
 				// System.out.println("Hell");
 			} else if (Farben.darkdesign == false) { // Wenn Darkdesign
 														// deaktiviert -->
-														// aktivieren
+														// Darkdesign aktivieren
 				Farben.setDarkdesign(true);
 				// System.out.println("Dunkel");
 			}
-			this.repaint();
+			// this.repaint();
 
-//			this.setBackground(Farben.getDefaultBackgroundcolor()); // Design
+			this.setBackground(Farben.getDefaultBackgroundcolor());
+			// Design
 			// "Reload"
 			// wenn
 			// design
