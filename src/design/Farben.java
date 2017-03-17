@@ -13,7 +13,7 @@ public class Farben {
 	
 	private static Color defaultBackgroundcolor;
 	private static Color defaultFontcolor;
-	private static boolean darkdesign = false;
+	public static boolean darkdesign;
 	
 	/**
 	 * reteun whether darkdesign is aktive or not
