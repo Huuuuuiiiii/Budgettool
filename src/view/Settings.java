@@ -38,12 +38,12 @@ public class Settings extends JPanel implements ActionListener {
 			settingsKathegoriePanel;
 	private JButton cancelButton, personButton, kategorieButton;
 	private JSplitPane splitPane;
-	private JLabel darkdesignLabel, personLabel, namePersonLabel, waerungLabel, finazMothLabel, mothBudgetLabel,
+	private JLabel darkdesignLabel, personLabel, namePersonLabel, waerungLabel, finanzMonth, monthBudget,
 			zyklusLabel, kategorieNameLabel, kategorieLabel, Titel;
 	private JToggleButton darkdesignToggleButton, settingsBudgetButton, settingsViewButton, settingsAddButton;
-	private JTextField personTextField, kategorieTextField, mothBudgetTextField;
-	private JComboBox zyklusComboBox, mothBudgetComboBox, waerungComboBox;
-	private JSpinner finazMothSpinner;
+	private JTextField personTextField, kategorieTextField, monthBudgetTextField;
+	private JComboBox zyklusComboBox, monthBudgetComboBox, waerungComboBox;
+	private JSpinner finazMonthSpinner;
 	private ViewHandler mainPanel;
 
 	/**
@@ -134,11 +134,11 @@ public class Settings extends JPanel implements ActionListener {
 		waerungLabel = Components.createLabel("Währung", 20, 36, 100, 14);
 		settingsBudgetPanel.add(waerungLabel);
 
-		mothBudgetLabel = Components.createLabel("Monatsbudget", 20, 76, 100, 14);
-		settingsBudgetPanel.add(mothBudgetLabel);
+		monthBudget = Components.createLabel("Monatsbudget", 20, 76, 100, 14);
+		settingsBudgetPanel.add(monthBudget);
 
-		finazMothLabel = Components.createLabel("Finazmonatsbeginn", 20, 116, 100, 14);
-		settingsBudgetPanel.add(finazMothLabel);
+		finanzMonth = Components.createLabel("Finazmonatsbeginn", 20, 116, 100, 14);
+		settingsBudgetPanel.add(finanzMonth);
 
 		zyklusLabel = Components.createLabel("Zyklus", 20, 156, 100, 14);
 		settingsBudgetPanel.add(zyklusLabel);
@@ -146,14 +146,14 @@ public class Settings extends JPanel implements ActionListener {
 		waerungComboBox = Components.createComboBox(122, 33, 62, 20);
 		settingsBudgetPanel.add(waerungComboBox);
 
-		mothBudgetTextField = Components.createTextField("", 122, 73, 86, 20);
-		settingsBudgetPanel.add(mothBudgetTextField);
+		monthBudgetTextField = Components.createTextField("", 122, 73, 86, 20);
+		settingsBudgetPanel.add(monthBudgetTextField);
 
-		finazMothSpinner = Components.createSpinner(122, 113, 62, 20);
-		settingsBudgetPanel.add(finazMothSpinner);
+		finazMonthSpinner = Components.createSpinner(122, 113, 62, 20);
+		settingsBudgetPanel.add(finazMonthSpinner);
 
-		mothBudgetComboBox = Components.createComboBox(218, 73, 62, 20);
-		settingsBudgetPanel.add(mothBudgetComboBox);
+		monthBudgetComboBox = Components.createComboBox(218, 73, 62, 20);
+		settingsBudgetPanel.add(monthBudgetComboBox);
 
 		zyklusComboBox = Components.createComboBox(122, 153, 62, 20);
 		settingsBudgetPanel.add(zyklusComboBox);
@@ -186,15 +186,30 @@ public class Settings extends JPanel implements ActionListener {
 			this.setVisible(false);
 			mainPanel.getMainViewPanel().setVisible(true);
 		}
-		if (e.getSource() == darkdesignToggleButton) {
-			if (Farben.darkdesign == true) {
+		if (e.getSource() == darkdesignToggleButton) { // Dark Design
+			if (Farben.darkdesign == true) { // Wenn Darkdesign aktiviert
+												// --> Darkdesign deaktivieren
 				Farben.setDarkdesign(false);
-				System.out.println("Hell");
-			} else if (Farben.darkdesign == false) {
+				// System.out.println("Hell");
+			} else if (Farben.darkdesign == false) { // Wenn Darkdesign
+														// deaktiviert -->
+														// aktivieren
 				Farben.setDarkdesign(true);
-				System.out.println("Dunkel");
+				// System.out.println("Dunkel");
 			}
-			this.setBackground(Farben.getDefaultBackgroundcolor());
+			this.repaint();
+
+//			this.setBackground(Farben.getDefaultBackgroundcolor()); // Design
+			// "Reload"
+			// wenn
+			// design
+			// geaendert
+			// wurde
+			// muessen
+			// das die
+			// Views
+			// "mitbekommen"
+
 		}
 
 		if (e.getSource() == settingsAddButton) {
@@ -213,7 +228,7 @@ public class Settings extends JPanel implements ActionListener {
 			setSettingsViewPanelVisible(false);
 			setsettingsBudgetPanelVisible(true);
 			setsettingsAddPanelVisible(false);
-			System.out.println("Passiert was");
+			// System.out.println("Passiert was");
 		}
 
 	}
