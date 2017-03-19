@@ -108,6 +108,7 @@ public class EinnahmenView extends JPanel implements ActionListener{
         addButton = Components.createButtom("Enter");
         addButton.setBounds(250, 292, 89, 23);
         addButton.setBorder(Rahmen.roundedBorder);
+        addButton.addActionListener(this);
         editPanel.add(this.addButton);
     }
 

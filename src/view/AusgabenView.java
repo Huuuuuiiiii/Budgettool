@@ -101,7 +101,7 @@ public class AusgabenView extends JPanel implements ActionListener {
         editPanel.add(this.kategorieLabel);
         
         datumLabel = Components.createImageLabel("pic/calendar.png", 67, 183, 40, 40);
-        editPanel.add(this.datumLabel);
+        editPanel.add(this.datumLabel);  
         
         personLabel = Components.createImageLabel("pic/person.png", 67, 233, 40, 40);
         editPanel.add(this.personLabel);
@@ -130,6 +130,7 @@ public class AusgabenView extends JPanel implements ActionListener {
         addButton = Components.createButtom("Enter");
         addButton.setBounds(250, 292, 89, 23);
         addButton.setBorder(Rahmen.roundedBorder);
+        addButton.addActionListener(this);
         editPanel.add(this.addButton);
     }
 
