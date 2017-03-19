@@ -45,8 +45,8 @@ public class Components {
         return textField;
     }
 
-    public static JComboBox createComboBox(int x, int y, int white, int higet) {
-        JComboBox comboBox = new JComboBox();
+    public static JComboBox<String> createComboBox(int x, int y, int white, int higet) {
+        JComboBox<String> comboBox = new JComboBox<>();
         comboBox.setFont(Schrift.STANDART);
         comboBox.setBounds(x, y, white, higet);
         comboBox.setForeground(Farben.getDefaultFontcolor());
@@ -58,15 +58,6 @@ public class Components {
     	SpinnerDateModel sdm = new SpinnerDateModel();
 		JSpinner spinner = new JSpinner(sdm);
         spinner.setEditor(new DateEditor(spinner,"dd.MM.yyyy"));
-   	 
-   	 	spinner.addChangeListener(new ChangeListener(){
-
-   	 		public void stateChanged(ChangeEvent arg0){
-   	 			Date fromSpinner = (Date) spinner.getValue();
-   	 			Date fromModel = sdm.getDate();
-//   	 			System.out.println(fromSpinner + " or " + fromModel);
-   	 		}
-   	 	});
         spinner.setFont(Schrift.STANDART);
         spinner.setBounds(x, y, white, higet);
         spinner.setForeground(Farben.getDefaultFontcolor());

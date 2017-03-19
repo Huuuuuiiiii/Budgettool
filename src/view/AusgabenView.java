@@ -27,6 +27,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import data.CsvWriter;
+import data.DropdownReader;
 import data.Kostenstelle;
 
 public class AusgabenView extends JPanel implements ActionListener {
@@ -113,18 +114,20 @@ public class AusgabenView extends JPanel implements ActionListener {
         editPanel.add(this.betragComboBox);
         
         kategorieComboBox = Components.createComboBox(147, 142, 155, 20);
+        listOptions("Kategorie", kategorieComboBox);
         editPanel.add(this.kategorieComboBox);
         
         dateSpinner = Components.createSpinner(147, 192, 100, 20);
         editPanel.add(this.dateSpinner);
         
-       // monthSpinner = Components.createSpinner(197, 192, 40, 20);
-       // editPanel.add(this.monthSpinner);
+//        monthSpinner = Components.createSpinner(197, 192, 40, 20);
+//        editPanel.add(this.monthSpinner);
         
-       // yearSpinner = Components.createSpinner(247, 192, 55, 20);
-       // editPanel.add(this.yearSpinner);
+//        yearSpinner = Components.createSpinner(247, 192, 55, 20);
+//        editPanel.add(this.yearSpinner);
         
-        personComboBox = Components.createComboBox(148, 242, 154, 20);
+        personComboBox= Components.createComboBox(148, 242, 154, 20);
+        listOptions("Person", personComboBox);
         editPanel.add(this.personComboBox);
         
         addButton = Components.createButtom("Enter");
@@ -142,9 +145,16 @@ public class AusgabenView extends JPanel implements ActionListener {
 			mainPanel.getMainViewPanel().setVisible(true);
 		}
 		if (e.getSource() == addButton){
-			writer.writer(new Kostenstelle(betragTextField.getText(), kategorieComboBox.getName(), dateSpinner.getName(), personComboBox.getName()));
+			writer.writer(new Kostenstelle(betragTextField.getText(), kategorieComboBox.getName(), ((Date) dateSpinner.getModel().getValue()), "lol"));
 			this.setVisible(false);
 			mainPanel.getMainViewPanel().setVisible(true);
 		}
+	}
+	
+	private void listOptions(String Filename, JComboBox<String> ComboBox){
+		 DropdownReader reader = new DropdownReader(Filename);
+	     for(String option : reader.getOptions()){
+	    	 ComboBox.addItem(option);
+	     }
 	}
 }

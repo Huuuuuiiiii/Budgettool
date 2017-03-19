@@ -16,6 +16,7 @@ import java.awt.CardLayout;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import data.DropdownWriter;
 import design.Components;
 import design.Farben;
 import design.Rahmen;
@@ -43,6 +44,8 @@ public class Settings extends JPanel implements ActionListener{
 	private JComboBox zyklusComboBox, mothBudgetComboBox, waerungComboBox;
 	private JSpinner finazMothSpinner;
 	private ViewHandler mainPanel;
+	private DropdownWriter personWriter = new DropdownWriter("Person");
+	private DropdownWriter kategorieWriter = new DropdownWriter("Kategorie");
 
 	/**
 	 * Create the panel.
@@ -108,6 +111,9 @@ public class Settings extends JPanel implements ActionListener{
 		settingsAddPanel.add(personTextField);
 		
 		personButton = Components.createButtom("Person hinzufügen");
+		personButton.setBounds(30,60,155,20);
+		personButton.setBorder(Rahmen.roundedBorder);
+		personButton.addActionListener(this);
 		settingsAddPanel.add(personButton);
 		
 		kategorieLabel = Components.createLabel("Kategorie", 10, 125, 110, 14);
@@ -121,6 +127,9 @@ public class Settings extends JPanel implements ActionListener{
 		settingsAddPanel.add(kategorieTextField);
 		
 		kategorieButton = Components.createButtom("Kategorie hinzufügen");
+		kategorieButton.setBounds(20, 175, 155, 20);
+		kategorieButton.setBorder(Rahmen.roundedBorder);
+		kategorieButton.addActionListener(this);
 		settingsAddPanel.add(kategorieButton);
 		
 		settingsBudgetPanel = new JPanel();
@@ -200,6 +209,15 @@ public class Settings extends JPanel implements ActionListener{
 			setSettingsViewPanelVisible(false);
 			setsettingsBudgetPanelVisible(true);
 			setsettingsAddPanelVisible(false);
+		}
+		
+		if (e.getSource() == personButton) {
+			personWriter.writer(personTextField.getText());
+			personTextField.setText("");
+		}
+		if (e.getSource() == kategorieButton) {
+			kategorieWriter.writer(kategorieTextField.getText());
+			kategorieTextField.setText("");
 		}
 	}
 	

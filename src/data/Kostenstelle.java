@@ -1,10 +1,13 @@
 package data;
 
+import java.util.Date;
+
 public class Kostenstelle {
 
-	private String name, kathegorie, datum, gruppe;
+	private String name, kathegorie, gruppe;
+	private Date datum;
 	
-	public Kostenstelle(String name, String kathegorie, String datum, String gruppe) {
+	public Kostenstelle(String name, String kathegorie, Date datum, String gruppe) {
 		this.name = name;
 		this.kathegorie = kathegorie;
 		this.datum = datum;
@@ -27,11 +30,11 @@ public class Kostenstelle {
 		this.kathegorie = kathegorie;
 	}
 
-	public String getDatum() {
+	public Date getDatum() {
 		return datum;
 	}
 
-	public void setDatum(String datum) {
+	public void setDatum(Date datum) {
 		this.datum = datum;
 	}
 

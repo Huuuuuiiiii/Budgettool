@@ -12,6 +12,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import data.CsvWriter;
+import data.DropdownReader;
 import data.Kostenstelle;
 import design.Components;
 import design.Farben;
@@ -27,6 +28,8 @@ import javax.swing.JSpinner;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class EinnahmenView extends JPanel implements ActionListener{
 
@@ -36,7 +39,7 @@ public class EinnahmenView extends JPanel implements ActionListener{
 	private JLabel betragLabel, datumLabel, personLabel, kategorieLabel, titel;
 	private JTextField betragTextField;
 	private JSpinner dateSpinner, monthSpinner, yearSpinner;
-	private JComboBox betragComboBox, personComboBox, kategorieComboBox;
+	private JComboBox<String> betragComboBox, personComboBox, kategorieComboBox;
 	private CsvWriter writer = new CsvWriter("Einnahmen");
 
 	/**
@@ -91,6 +94,7 @@ public class EinnahmenView extends JPanel implements ActionListener{
         editPanel.add(this.betragComboBox);
         
         kategorieComboBox = Components.createComboBox(147, 142, 155, 20);
+        listOptions("Kategorie", kategorieComboBox);
         editPanel.add(this.kategorieComboBox);
         
         dateSpinner = Components.createSpinner(147, 192, 100, 20);
@@ -98,11 +102,12 @@ public class EinnahmenView extends JPanel implements ActionListener{
         
 //        monthSpinner = Components.createSpinner(197, 192, 40, 20);
 //        editPanel.add(this.monthSpinner);
-//        
+        
 //        yearSpinner = Components.createSpinner(247, 192, 55, 20);
 //        editPanel.add(this.yearSpinner);
         
-        personComboBox = Components.createComboBox(148, 242, 154, 20);
+        personComboBox= Components.createComboBox(148, 242, 154, 20);
+        listOptions("Person", personComboBox);
         editPanel.add(this.personComboBox);
         
         addButton = Components.createButtom("Enter");
@@ -122,9 +127,16 @@ public class EinnahmenView extends JPanel implements ActionListener{
 			mainPanel.getEinnahmeViewPanel().setVisible(false);
 		}
 		if (e.getSource() == addButton){
-			writer.writer(new Kostenstelle(betragTextField.getText(), kategorieComboBox.getName(), dateSpinner.getName(), personComboBox.getName()));
+			writer.writer(new Kostenstelle(betragTextField.getText(), kategorieComboBox.getName(), ((Date) dateSpinner.getModel().getValue()), "lol"));
 			this.setVisible(false);
 			mainPanel.getMainViewPanel().setVisible(true);
 		}
+	}
+	
+	private void listOptions(String Filename, JComboBox<String> ComboBox){
+		 DropdownReader reader = new DropdownReader(Filename);
+	     for(String option : reader.getOptions()){
+	    	 ComboBox.addItem(option);
+	     }  
 	}
 }
