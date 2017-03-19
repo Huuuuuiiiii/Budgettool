@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import data.CsvWriter;
+import data.Kostenstelle;
 import design.Components;
 import design.Farben;
 import design.Rahmen;
@@ -33,8 +35,9 @@ public class EinnahmenView extends JPanel implements ActionListener{
 	private ViewHandler mainPanel;
 	private JLabel betragLabel, datumLabel, personLabel, kategorieLabel, titel;
 	private JTextField betragTextField;
-	private JSpinner daySpinner, monthSpinner, yearSpinner;
+	private JSpinner dateSpinner, monthSpinner, yearSpinner;
 	private JComboBox betragComboBox, personComboBox, kategorieComboBox;
+	private CsvWriter writer = new CsvWriter("Einnahmen");
 
 	/**
 	 * Create the panel.
@@ -90,8 +93,8 @@ public class EinnahmenView extends JPanel implements ActionListener{
         kategorieComboBox = Components.createComboBox(147, 142, 155, 20);
         editPanel.add(this.kategorieComboBox);
         
-        daySpinner = Components.createSpinner(147, 192, 100, 20);
-        editPanel.add(this.daySpinner);
+        dateSpinner = Components.createSpinner(147, 192, 100, 20);
+        editPanel.add(this.dateSpinner);
         
 //        monthSpinner = Components.createSpinner(197, 192, 40, 20);
 //        editPanel.add(this.monthSpinner);
@@ -118,6 +121,7 @@ public class EinnahmenView extends JPanel implements ActionListener{
 			mainPanel.getEinnahmeViewPanel().setVisible(false);
 		}
 		if (e.getSource() == addButton){
+			writer.writer(new Kostenstelle(betragTextField.getText(), kategorieComboBox.getName(), dateSpinner.getName(), personComboBox.getName()));
 			this.setVisible(false);
 			mainPanel.getMainViewPanel().setVisible(true);
 		}
