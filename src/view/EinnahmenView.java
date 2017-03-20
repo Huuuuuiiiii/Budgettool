@@ -14,6 +14,8 @@ import javax.swing.border.EmptyBorder;
 import data.CsvWriter;
 import data.DropdownReader;
 import data.Kostenstelle;
+import data.Waerung;
+import data.WaerungReader;
 import design.Components;
 import design.Farben;
 import design.Rahmen;
@@ -91,6 +93,10 @@ public class EinnahmenView extends JPanel implements ActionListener{
         editPanel.add(this.betragTextField);
         
         betragComboBox = Components.createComboBox(273, 92, 66, 20);
+        WaerungReader waerung = new WaerungReader();
+        for(Waerung option : waerung.getOptions()){
+        	betragComboBox.addItem(option.getAbkürzung());
+        }
         editPanel.add(this.betragComboBox);
         
         kategorieComboBox = Components.createComboBox(147, 142, 155, 20);

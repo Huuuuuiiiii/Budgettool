@@ -29,6 +29,8 @@ import javax.swing.event.ChangeListener;
 import data.CsvWriter;
 import data.DropdownReader;
 import data.Kostenstelle;
+import data.Waerung;
+import data.WaerungReader;
 
 public class AusgabenView extends JPanel implements ActionListener {
 	
@@ -111,6 +113,10 @@ public class AusgabenView extends JPanel implements ActionListener {
         editPanel.add(this.betragTextField);
         
         betragComboBox = Components.createComboBox(273, 92, 66, 20);
+        WaerungReader waerung = new WaerungReader();
+        for(Waerung option : waerung.getOptions()){
+        	betragComboBox.addItem(option.getAbkürzung());
+        }
         editPanel.add(this.betragComboBox);
         
         kategorieComboBox = Components.createComboBox(147, 142, 155, 20);

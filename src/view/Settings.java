@@ -17,6 +17,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import data.DropdownWriter;
+import data.Waerung;
+import data.WaerungReader;
 import design.Components;
 import design.Farben;
 import design.Rahmen;
@@ -41,11 +43,12 @@ public class Settings extends JPanel implements ActionListener{
 	private JLabel darkdesignLabel, personLabel, namePersonLabel, waerungLabel, finazMothLabel, mothBudgetLabel, zyklusLabel, kategorieNameLabel, kategorieLabel, Titel;
 	private JToggleButton darkdesignToggleButton, settingsBudgetButton, settingsViewButton, settingsAddButton;
 	private JTextField personTextField, kategorieTextField, mothBudgetTextField;
-	private JComboBox zyklusComboBox, mothBudgetComboBox, waerungComboBox;
+	private JComboBox<String> zyklusComboBox, mothBudgetComboBox, waerungComboBox;
 	private JSpinner finazMothSpinner;
 	private ViewHandler mainPanel;
 	private DropdownWriter personWriter = new DropdownWriter("Person");
 	private DropdownWriter kategorieWriter = new DropdownWriter("Kategorie");
+	private WaerungReader waerung = new WaerungReader();
 
 	/**
 	 * Create the panel.
@@ -150,18 +153,28 @@ public class Settings extends JPanel implements ActionListener{
 		settingsBudgetPanel.add(zyklusLabel);
 		
 		waerungComboBox = Components.createComboBox(122, 33, 62, 20);
+	    for(Waerung option : waerung.getOptions()){
+	      	waerungComboBox.addItem(option.getAbkürzung());
+	    }
 		settingsBudgetPanel.add(waerungComboBox);
 		
 		mothBudgetTextField = Components.createTextField("", 122, 73, 86, 20);
 		settingsBudgetPanel.add(mothBudgetTextField);
 		
-		finazMothSpinner = Components.createSpinner(122, 113, 62, 20);
+		finazMothSpinner = Components.createSpinner(122, 113, 86, 20);
 		settingsBudgetPanel.add(finazMothSpinner);
 		
 		mothBudgetComboBox = Components.createComboBox(218, 73, 62, 20);
+		for(Waerung option : waerung.getOptions()){
+			mothBudgetComboBox.addItem(option.getAbkürzung());
+	    }
 		settingsBudgetPanel.add(mothBudgetComboBox);
 		
-		zyklusComboBox = Components.createComboBox(122, 153, 62, 20);
+		zyklusComboBox = Components.createComboBox(122, 153, 86, 20);
+		zyklusComboBox.addItem("Täglich");
+		zyklusComboBox.addItem("Wöchentlich");
+		zyklusComboBox.addItem("Monatlich");
+		zyklusComboBox.addItem("Jährlich");
 		settingsBudgetPanel.add(zyklusComboBox);
 		
 		settingsKathegoriePanel = new JPanel();
