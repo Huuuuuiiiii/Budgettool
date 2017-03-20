@@ -15,6 +15,7 @@ import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -26,6 +27,7 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
+import data.Shortcut;
 import design.Components;
 import design.Farben;
 import design.Rahmen;
@@ -38,7 +40,8 @@ public class MainView extends JPanel implements ActionListener{
 	private JPanel mainViewPanel, shortcutsPanel, manageShortcutPanel, titelPanel, dayliBudgetPanel, erfassungsPanel, uebersichtPanel, monthPanel; 
 	private JButton removeShortcutButton, addShortcutButton, menuButton, plusButton, minusButton;
 	private JLabel Titel, dayliBudgetBalken, dayliBudgetLabel, monthBudgetLabel, kreisdiagrammLabel;
-	private JList shortcutlist;
+	private JList<Shortcut> shortcutlist;
+	private DefaultListModel<Shortcut> listModel = new DefaultListModel<>();
 	private ViewHandler mainPanel;
 	
 	
@@ -77,9 +80,10 @@ public class MainView extends JPanel implements ActionListener{
 		addShortcutButton.setBorder(Rahmen.defaultBorder);
 		manageShortcutPanel.add(addShortcutButton);
 		
-		shortcutlist = new JList();
+		shortcutlist = new JList<Shortcut>();
 		shortcutlist.setBackground(Farben.getDefaultBackgroundcolor());
 		shortcutlist.setCellRenderer(new ShortcutPanel());
+		shortcutlist.setModel(listModel);
 		shortcutlist.setBorder(Rahmen.defaultBorder);
 		shortcutsPanel.add(new JScrollPane(shortcutlist), BorderLayout.CENTER);
 		
