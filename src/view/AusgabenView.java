@@ -145,7 +145,8 @@ public class AusgabenView extends JPanel implements ActionListener {
 			mainPanel.getMainViewPanel().setVisible(true);
 		}
 		if (e.getSource() == addButton){
-			writer.writer(new Kostenstelle(betragTextField.getText(), kategorieComboBox.getName(), ((Date) dateSpinner.getModel().getValue()), "lol"));
+			writer.writer(new Kostenstelle(betragTextField.getText(), kategorieComboBox.getSelectedItem().toString(), ((Date) dateSpinner.getModel().getValue()), personComboBox.getSelectedItem().toString()));
+			betragTextField.setText("");
 			this.setVisible(false);
 			mainPanel.getMainViewPanel().setVisible(true);
 		}
