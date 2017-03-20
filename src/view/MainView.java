@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -77,10 +78,10 @@ public class MainView extends JPanel implements ActionListener{
 		manageShortcutPanel.add(addShortcutButton);
 		
 		shortcutlist = new JList();
-		JScrollPane scrollPane = new JScrollPane();
 		shortcutlist.setBackground(Farben.getDefaultBackgroundcolor());
+		shortcutlist.setCellRenderer(new ShortcutPanel());
 		shortcutlist.setBorder(Rahmen.defaultBorder);
-		shortcutsPanel.add(scrollPane.add(shortcutlist), BorderLayout.CENTER);
+		shortcutsPanel.add(new JScrollPane(shortcutlist), BorderLayout.CENTER);
 		
 		titelPanel = new JPanel();
 		add(titelPanel, BorderLayout.NORTH);
