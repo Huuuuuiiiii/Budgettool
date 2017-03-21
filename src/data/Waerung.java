@@ -3,13 +3,13 @@ package data;
 public class Waerung {
 
 	private int id;
-	private String abkürzung, name;
+	private String abkuerzung, name;
 	private Double kurs;
 	
-	public Waerung(int id, String abkürzung, String name, Double kurs) {
+	public Waerung(int id, String abkuerzung, String name, Double kurs) {
 		super();
 		this.id = id;
-		this.abkürzung = abkürzung;
+		this.abkuerzung = abkuerzung;
 		this.name = name;
 		this.kurs = kurs;
 	}
@@ -22,8 +22,8 @@ public class Waerung {
 		return name;
 	}
 
-	public String getAbkürzung() {
-		return abkürzung;
+	public String getAbkuerzung() {
+		return abkuerzung;
 	}
 
 	public int getId() {

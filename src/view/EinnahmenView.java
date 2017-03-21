@@ -95,7 +95,7 @@ public class EinnahmenView extends JPanel implements ActionListener{
         betragComboBox = Components.createComboBox(273, 92, 66, 20);
         WaerungReader waerung = new WaerungReader();
         for(Waerung option : waerung.getOptions()){
-        	betragComboBox.addItem(option.getAbkürzung());
+        	betragComboBox.addItem(option.getAbkuerzung());
         }
         editPanel.add(this.betragComboBox);
         

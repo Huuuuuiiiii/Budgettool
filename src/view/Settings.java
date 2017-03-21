@@ -154,7 +154,7 @@ public class Settings extends JPanel implements ActionListener{
 		
 		waerungComboBox = Components.createComboBox(122, 33, 62, 20);
 	    for(Waerung option : waerung.getOptions()){
-	      	waerungComboBox.addItem(option.getAbkürzung());
+	      	waerungComboBox.addItem(option.getAbkuerzung());
 	    }
 		settingsBudgetPanel.add(waerungComboBox);
 		
@@ -166,15 +166,15 @@ public class Settings extends JPanel implements ActionListener{
 		
 		mothBudgetComboBox = Components.createComboBox(218, 73, 62, 20);
 		for(Waerung option : waerung.getOptions()){
-			mothBudgetComboBox.addItem(option.getAbkürzung());
+			mothBudgetComboBox.addItem(option.getAbkuerzung());
 	    }
 		settingsBudgetPanel.add(mothBudgetComboBox);
 		
 		zyklusComboBox = Components.createComboBox(122, 153, 86, 20);
-		zyklusComboBox.addItem("Täglich");
-		zyklusComboBox.addItem("Wöchentlich");
+		zyklusComboBox.addItem("Tï¿½glich");
+		zyklusComboBox.addItem("Wï¿½chentlich");
 		zyklusComboBox.addItem("Monatlich");
-		zyklusComboBox.addItem("Jährlich");
+		zyklusComboBox.addItem("Jï¿½hrlich");
 		settingsBudgetPanel.add(zyklusComboBox);
 		
 		settingsKathegoriePanel = new JPanel();
