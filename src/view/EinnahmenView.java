@@ -92,7 +92,7 @@ public class EinnahmenView extends JPanel implements ActionListener {
 		betragTextField = Components.createTextField("", 147, 92, 116, 20);
 		editPanel.add(this.betragTextField);
 
-		betragComboBox = Components.createComboBox(273, 92, 66, 20);
+		betragComboBox = Components.createComboBox(273, 92, 80, 20);
 		WaerungReader waerung = new WaerungReader();
 		for (Waerung option : waerung.getOptions()) {
 			betragComboBox.addItem(option.getAbkuerzung());
@@ -106,17 +106,11 @@ public class EinnahmenView extends JPanel implements ActionListener {
 		dateSpinner = Components.createSpinner(147, 192, 100, 20);
 		editPanel.add(this.dateSpinner);
 
-		// monthSpinner = Components.createSpinner(197, 192, 40, 20);
-		// editPanel.add(this.monthSpinner);
-
-		// yearSpinner = Components.createSpinner(247, 192, 55, 20);
-		// editPanel.add(this.yearSpinner);
-
 		personComboBox = Components.createComboBox(148, 242, 154, 20);
 		listOptions("Person", personComboBox);
 		editPanel.add(this.personComboBox);
 
-		addButton = Components.createButtom("Enter");
+		addButton = Components.createButtom("Speichern");
 		addButton.setBounds(250, 292, 89, 23);
 		addButton.setBorder(Rahmen.roundedBorder);
 		addButton.addActionListener(this);
@@ -138,7 +132,6 @@ public class EinnahmenView extends JPanel implements ActionListener {
 			betragTextField.setText("");
 			this.setVisible(false);
 			mainPanel.getMainViewPanel().setVisible(true);
-//			//listOptions("Person", personComboBox);
 		}
 	}
 
