@@ -39,7 +39,9 @@ public class AusgabenView extends JPanel implements ActionListener {
 	private JLabel betragLabel, datumLabel, personLabel, kategorieLabel, titel;
 	private JTextField betragTextField;
 	private JSpinner dateSpinner, monthSpinner, yearSpinner;
-	private JComboBox betragComboBox, personComboBox, kategorieComboBox;
+	private JComboBox betragComboBox;
+	private static JComboBox personComboBox;
+	private static JComboBox kategorieComboBox;
 	private ViewHandler mainPanel;
 	private CsvWriter writer = new CsvWriter("Ausgaben");
 
@@ -112,7 +114,7 @@ public class AusgabenView extends JPanel implements ActionListener {
         betragTextField = Components.createTextField("", 147, 92, 116, 20);
         editPanel.add(this.betragTextField);
 
-        betragComboBox = Components.createComboBox(273, 92, 66, 20);
+        betragComboBox = Components.createComboBox(273, 92, 80, 20);
         WaerungReader waerung = new WaerungReader();
         for(Waerung option : waerung.getOptions()){
         	betragComboBox.addItem(option.getAbkuerzung());
@@ -135,8 +137,8 @@ public class AusgabenView extends JPanel implements ActionListener {
         personComboBox= Components.createComboBox(148, 242, 154, 20);
         listOptions("Person", personComboBox);
         editPanel.add(this.personComboBox);
-
-        addButton = Components.createButtom("Enter");
+      
+        addButton = Components.createButtom("Speichern");      
         addButton.setBounds(250, 292, 89, 23);
         addButton.setBorder(Rahmen.roundedBorder);
         addButton.addActionListener(this);
@@ -157,11 +159,16 @@ public class AusgabenView extends JPanel implements ActionListener {
 			mainPanel.getMainViewPanel().setVisible(true);
 		}
 	}
-
-	private void listOptions(String Filename, JComboBox<String> ComboBox){
+  	private static void listOptions(String Filename, JComboBox<String> ComboBox){
 		 DropdownReader reader = new DropdownReader(Filename);
 	     for(String option : reader.getOptions()){
 	    	 ComboBox.addItem(option);
 	     }
+	}
+	public static void uploadPerson() {
+		listOptions("Person", personComboBox);
+	}
+	public static void uploadKategory(){
+		listOptions("Kategorie", kategorieComboBox);
 	}
 }

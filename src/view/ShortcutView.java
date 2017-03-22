@@ -11,8 +11,12 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+
 import data.Shortcut;
 import data.ShortcutWriter;
+import data.DropdownReader;
+import data.Waerung;
+import data.WaerungReader;
 import design.Components;
 import design.Farben;
 import design.Rahmen;
@@ -28,16 +32,17 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ShortcutView extends JPanel implements ActionListener{
+public class ShortcutView extends JPanel implements ActionListener {
 
 	private JButton cancelButton, addButton;
 	private JPanel editPanel, titelPanel;
 	private JLabel betragLabel, datumLabel, personLabel, kategorieLabel, titel, nameLabel;
 	private JTextField betragTextField, nameTextField;
-//	private JSpinner daySpinner, monthSpinner, yearSpinner;
-	private JComboBox betragComboBox, personComboBox, kategorieComboBox;
+	// private JSpinner daySpinner, monthSpinner, yearSpinner;
+	private JComboBox betragComboBox;
+	private static JComboBox personComboBox;
+	private static JComboBox kategorieComboBox;
 	private ViewHandler mainPanel;
-
 
 	/**
 	 * Create the panel.
@@ -47,6 +52,7 @@ public class ShortcutView extends JPanel implements ActionListener{
 		this.mainPanel = mainPanel;
 
 		setLayout(new BorderLayout(0, 0));
+    
         setBorder(new EmptyBorder(10, 10, 10, 10));
         setBackground(Farben.getDefaultBackgroundcolor());
         setSize(600, 600);
@@ -111,15 +117,17 @@ public class ShortcutView extends JPanel implements ActionListener{
         personComboBox = Components.createComboBox(147, 192, 154, 20);
         editPanel.add(personComboBox);
 
-        addButton = Components.createButtom("Enter");
+        addButton = Components.createButtom("Speichern");
         addButton.setBounds(250, 292, 89, 23);
         addButton.setBorder(Rahmen.roundedBorder);
         addButton.addActionListener(this);
         editPanel.add(addButton);
     }
 
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
+
 
 		if (e.getSource() == cancelButton){
 			mainPanel.getShortcutViewPanel().setVisible(false);
@@ -129,8 +137,24 @@ public class ShortcutView extends JPanel implements ActionListener{
 			String image = String.valueOf(Character.toUpperCase(nameTextField.getText().charAt(0))) + ".png";
 			new ShortcutWriter(new Shortcut(nameTextField.getText(), image, betragTextField.getText(), kategorieComboBox.getSelectedItem().toString(), personComboBox.getSelectedItem().toString()));
 //			new ShortcutWriter(new Shortcut("lol","lol","lol","lol","lol"));
+
 			this.setVisible(false);
 			mainPanel.getMainViewPanel().setVisible(true);
 		}
+	}
+
+	private static void listOptions(String Filename, JComboBox<String> ComboBox) {
+		DropdownReader reader = new DropdownReader(Filename);
+		for (String option : reader.getOptions()) {
+			ComboBox.addItem(option);
+		}
+	}
+
+	public static void uploadPerson() {
+		listOptions("Person", personComboBox);
+	}
+
+	public static void uploadKategory() {
+		listOptions("Kategorie", kategorieComboBox);
 	}
 }

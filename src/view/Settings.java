@@ -1,4 +1,5 @@
 package view;
+
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
@@ -29,18 +30,19 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JSpinner;
 
-
 /*
  * Copyright 2017 Coop, Informatik / Internet Entwicklung.
  * Use is subject to license terms.
  */
 
-public class Settings extends JPanel implements ActionListener{
+public class Settings extends JPanel implements ActionListener {
 
-	private JPanel titelPanel, settingsPanel, settingsLayoutPanel, settingsAddPanel, settingsBudgetPanel, settingsKathegoriePanel;
+	private JPanel titelPanel, settingsPanel, settingsLayoutPanel, settingsAddPanel, settingsBudgetPanel,
+			settingsKathegoriePanel;
 	private JButton cancelButton, personButton, kategorieButton;
 	private JSplitPane splitPane;
-	private JLabel darkdesignLabel, personLabel, namePersonLabel, waerungLabel, finazMothLabel, mothBudgetLabel, zyklusLabel, kategorieNameLabel, kategorieLabel, Titel;
+	private JLabel darkdesignLabel, personLabel, namePersonLabel, waerungLabel, finazMothLabel, mothBudgetLabel,
+			zyklusLabel, kategorieNameLabel, kategorieLabel, Titel;
 	private JToggleButton darkdesignToggleButton, settingsBudgetButton, settingsViewButton, settingsAddButton;
 	private JTextField personTextField, kategorieTextField, mothBudgetTextField;
 	private JComboBox<String> zyklusComboBox, mothBudgetComboBox, waerungComboBox;
@@ -95,7 +97,8 @@ public class Settings extends JPanel implements ActionListener{
 		darkdesignLabel = Components.createLabel("Dark Design", 20, 36, 100, 14);
 		settingsLayoutPanel.add(darkdesignLabel);
 
-		darkdesignToggleButton = Components.createToggleButton("ON / OF");
+
+		darkdesignToggleButton = Components.createToggleButton("ON / OFF");
 		darkdesignToggleButton.setBounds(122, 29, 128, 23);
 		settingsLayoutPanel.add(darkdesignToggleButton);
 
@@ -114,7 +117,7 @@ public class Settings extends JPanel implements ActionListener{
 		settingsAddPanel.add(personTextField);
 
 		personButton = Components.createButtom("Person hinzufügen");
-		personButton.setBounds(30,60,155,20);
+		personButton.setBounds(30, 60, 155, 20);
 		personButton.setBorder(Rahmen.roundedBorder);
 		personButton.addActionListener(this);
 		settingsAddPanel.add(personButton);
@@ -152,25 +155,26 @@ public class Settings extends JPanel implements ActionListener{
 		zyklusLabel = Components.createLabel("Zyklus", 20, 156, 100, 14);
 		settingsBudgetPanel.add(zyklusLabel);
 
-		waerungComboBox = Components.createComboBox(122, 33, 62, 20);
-	    for(Waerung option : waerung.getOptions()){
-	      	waerungComboBox.addItem(option.getAbkuerzung());
-	    }
+		waerungComboBox = Components.createComboBox(122, 33, 80, 20);
+		for (Waerung option : waerung.getOptions()) {
+			waerungComboBox.addItem(option.getAbkuerzung());
+		}
 		settingsBudgetPanel.add(waerungComboBox);
 
 		mothBudgetTextField = Components.createTextField("", 122, 73, 86, 20);
 		settingsBudgetPanel.add(mothBudgetTextField);
 
-		finazMothSpinner = Components.createSpinner(122, 113, 86, 20);
+		finazMothSpinner = Components.createSpinner(122, 113, 90, 20);
 		settingsBudgetPanel.add(finazMothSpinner);
 
-		mothBudgetComboBox = Components.createComboBox(218, 73, 62, 20);
-		for(Waerung option : waerung.getOptions()){
+		mothBudgetComboBox = Components.createComboBox(218, 73, 80, 20);
+		for (Waerung option : waerung.getOptions()) {
 			mothBudgetComboBox.addItem(option.getAbkuerzung());
-	    }
+		}
 		settingsBudgetPanel.add(mothBudgetComboBox);
 
-		zyklusComboBox = Components.createComboBox(122, 153, 86, 20);
+		zyklusComboBox = Components.createComboBox(122, 153, 90, 20);
+
 		zyklusComboBox.addItem("Täglich");
 		zyklusComboBox.addItem("Wöchentlich");
 		zyklusComboBox.addItem("Monatlich");
@@ -182,12 +186,12 @@ public class Settings extends JPanel implements ActionListener{
 		settingsKathegoriePanel.setBackground(Farben.getDefaultBackgroundcolor());
 		settingsKathegoriePanel.setLayout(new GridLayout(10, 1, 0, 0));
 
-		settingsViewButton = Components.createToggleButton("View");
+		settingsViewButton = Components.createToggleButton("Ansicht");
 		settingsViewButton.setBorder(Rahmen.defaultBorder);
 		settingsKathegoriePanel.add(settingsViewButton);
 		settingsViewButton.addActionListener(this);
 
-		settingsAddButton = Components.createToggleButton("Add");
+		settingsAddButton = Components.createToggleButton("Hinzufügen");
 		settingsAddButton.setBorder(Rahmen.defaultBorder);
 		settingsKathegoriePanel.add(settingsAddButton);
 		settingsAddButton.addActionListener(this);
@@ -201,24 +205,24 @@ public class Settings extends JPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		if (e.getSource() == cancelButton){
+		if (e.getSource() == cancelButton) {
 			this.setVisible(false);
 			mainPanel.getMainViewPanel().setVisible(true);
 		}
 
-		if (e.getSource() == settingsAddButton){
+		if (e.getSource() == settingsAddButton) {
 			setSettingsViewPanelVisible(false);
 			setsettingsBudgetPanelVisible(false);
 			setsettingsAddPanelVisible(true);
 		}
 
-		else if (e.getSource() == settingsViewButton){
+		else if (e.getSource() == settingsViewButton) {
 			setSettingsViewPanelVisible(true);
 			setsettingsBudgetPanelVisible(false);
 			setsettingsAddPanelVisible(false);
 		}
 
-		else if (e.getSource() == settingsBudgetButton){
+		else if (e.getSource() == settingsBudgetButton) {
 			setSettingsViewPanelVisible(false);
 			setsettingsBudgetPanelVisible(true);
 			setsettingsAddPanelVisible(false);
@@ -227,24 +231,30 @@ public class Settings extends JPanel implements ActionListener{
 		if (e.getSource() == personButton) {
 			personWriter.writer(personTextField.getText());
 			personTextField.setText("");
+			EinnahmenView.uploadPerson();
+			AusgabenView.uploadPerson();
+			ShortcutView.uploadPerson();
 		}
 		if (e.getSource() == kategorieButton) {
 			kategorieWriter.writer(kategorieTextField.getText());
 			kategorieTextField.setText("");
+			EinnahmenView.uploadKategory();
+			AusgabenView.uploadKategory();
+			ShortcutView.uploadKategory();
 		}
 	}
 
-	private void setSettingsViewPanelVisible(boolean visible){
+	private void setSettingsViewPanelVisible(boolean visible) {
 		settingsLayoutPanel.setVisible(visible);
 		settingsViewButton.setSelected(visible);
 	}
 
-	private void setsettingsAddPanelVisible(boolean visible){
+	private void setsettingsAddPanelVisible(boolean visible) {
 		settingsAddPanel.setVisible(visible);
 		settingsAddButton.setSelected(visible);
 	}
 
-	private void setsettingsBudgetPanelVisible(boolean visible){
+	private void setsettingsBudgetPanelVisible(boolean visible) {
 		settingsBudgetPanel.setVisible(visible);
 		settingsBudgetButton.setSelected(visible);
 	}
