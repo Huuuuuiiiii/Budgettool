@@ -97,7 +97,7 @@ public class Settings extends JPanel implements ActionListener {
 		darkdesignLabel = Components.createLabel("Dark Design", 20, 36, 100, 14);
 		settingsLayoutPanel.add(darkdesignLabel);
 
-		darkdesignToggleButton = Components.createToggleButton("ON / OF");
+		darkdesignToggleButton = Components.createToggleButton("ON / OFF");
 		darkdesignToggleButton.setBounds(122, 29, 128, 23);
 		settingsLayoutPanel.add(darkdesignToggleButton);
 
