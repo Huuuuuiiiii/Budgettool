@@ -39,7 +39,9 @@ public class AusgabenView extends JPanel implements ActionListener {
 	private JLabel betragLabel, datumLabel, personLabel, kategorieLabel, titel;
 	private JTextField betragTextField;
 	private JSpinner dateSpinner, monthSpinner, yearSpinner;
-	private JComboBox betragComboBox, personComboBox, kategorieComboBox;
+	private JComboBox betragComboBox;
+	private static JComboBox personComboBox;
+	private static JComboBox kategorieComboBox;
 	private ViewHandler mainPanel;
 	private CsvWriter writer = new CsvWriter("Ausgaben"); 
 	
@@ -158,10 +160,16 @@ public class AusgabenView extends JPanel implements ActionListener {
 		}
 	}
 	
-	private void listOptions(String Filename, JComboBox<String> ComboBox){
+	private static void listOptions(String Filename, JComboBox<String> ComboBox){
 		 DropdownReader reader = new DropdownReader(Filename);
 	     for(String option : reader.getOptions()){
 	    	 ComboBox.addItem(option);
 	     }
+	}
+	public static void uploadPerson() {
+		listOptions("Person", personComboBox);
+	}
+	public static void uploadKategory(){
+		listOptions("Kategorie", kategorieComboBox);
 	}
 }
