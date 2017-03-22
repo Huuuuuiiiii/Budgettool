@@ -99,11 +99,16 @@ public class ShortcutView extends JPanel implements ActionListener {
         betragTextField = Components.createTextField("", 147, 92, 116, 20);
         editPanel.add(betragTextField);
 
-        betragComboBox = Components.createComboBox(273, 92, 66, 20);
-        editPanel.add(betragComboBox);
+        betragComboBox = Components.createComboBox(273, 92, 80, 20);
+        WaerungReader waerung = new WaerungReader();
+		for (Waerung option : waerung.getOptions()) {
+			betragComboBox.addItem(option.getAbkuerzung());
+		}
+		editPanel.add(this.betragComboBox);
 
         kategorieComboBox = Components.createComboBox(147, 142, 155, 20);
-        editPanel.add(kategorieComboBox);
+        listOptions("Kategorie", kategorieComboBox);
+		editPanel.add(this.kategorieComboBox);
 
 //        daySpinner = Components.createSpinner(147, 192, 40, 20);
 //        editPanel.add(daySpinner);
@@ -115,7 +120,9 @@ public class ShortcutView extends JPanel implements ActionListener {
 //        editPanel.add(yearSpinner);
 
         personComboBox = Components.createComboBox(147, 192, 154, 20);
-        editPanel.add(personComboBox);
+        listOptions("Person", personComboBox);
+		editPanel.add(this.personComboBox);
+
 
         addButton = Components.createButtom("Speichern");
         addButton.setBounds(250, 292, 89, 23);
