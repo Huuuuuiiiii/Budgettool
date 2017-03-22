@@ -52,6 +52,7 @@ public class EinnahmenView extends JPanel implements ActionListener {
 		this.mainPanel = mainPanel;
 
 		setLayout(new BorderLayout(0, 0));
+
 		setBorder(new EmptyBorder(10, 10, 10, 10));
 		setBackground(Farben.getDefaultBackgroundcolor());
 		setSize(600, 600);
@@ -120,8 +121,9 @@ public class EinnahmenView extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
+
 		if (e.getSource() == cancelButton) {
-			this.setVisible(false);
+    			this.setVisible(false);
 			System.out.println();
 			mainPanel.getMainViewPanel().setVisible(true);
 			mainPanel.getEinnahmeViewPanel().setVisible(false);
@@ -134,6 +136,7 @@ public class EinnahmenView extends JPanel implements ActionListener {
 			mainPanel.getMainViewPanel().setVisible(true);
 		}
 	}
+
 
 	private static void listOptions(String Filename, JComboBox<String> ComboBox) {
 		DropdownReader reader = new DropdownReader(Filename);

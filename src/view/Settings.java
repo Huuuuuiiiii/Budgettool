@@ -97,6 +97,7 @@ public class Settings extends JPanel implements ActionListener {
 		darkdesignLabel = Components.createLabel("Dark Design", 20, 36, 100, 14);
 		settingsLayoutPanel.add(darkdesignLabel);
 
+
 		darkdesignToggleButton = Components.createToggleButton("ON / OFF");
 		darkdesignToggleButton.setBounds(122, 29, 128, 23);
 		settingsLayoutPanel.add(darkdesignToggleButton);
@@ -173,6 +174,7 @@ public class Settings extends JPanel implements ActionListener {
 		settingsBudgetPanel.add(mothBudgetComboBox);
 
 		zyklusComboBox = Components.createComboBox(122, 153, 90, 20);
+
 		zyklusComboBox.addItem("Täglich");
 		zyklusComboBox.addItem("Wöchentlich");
 		zyklusComboBox.addItem("Monatlich");

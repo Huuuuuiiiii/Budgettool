@@ -5,7 +5,7 @@ public class Waerung {
 	private int id;
 	private String abkuerzung, name;
 	private Double kurs;
-	
+
 	public Waerung(int id, String abkuerzung, String name, Double kurs) {
 		super();
 		this.id = id;
@@ -28,5 +28,5 @@ public class Waerung {
 
 	public int getId() {
 		return id;
-	}	
+	}
 }

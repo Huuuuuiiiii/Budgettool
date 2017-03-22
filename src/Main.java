@@ -1,3 +1,5 @@
+import java.util.Date;
+
 import data.WaerungReader;
 import view.ViewHandler;
 
@@ -7,14 +9,18 @@ import view.ViewHandler;
  */
 
 public class Main {
-	
+
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		ViewHandler mainView = new ViewHandler();
+//		String name = "joel";
+//		System.out.println(Character.toUpperCase(name.charAt(0)));
 //		System.out.println("Hallo Welt");
-		
+//		System.out.println(System.getProperty("os.name").toLowerCase());
+//		System.out.println(new Date());
+
 //		WaerungReader reader = new WaerungReader();
 	}
 

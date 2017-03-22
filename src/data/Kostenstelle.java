@@ -4,7 +4,9 @@ import java.util.Date;
 
 public class Kostenstelle {
 
-	private String name, kathegorie, gruppe;
+	private String name;
+	protected String kathegorie;
+	private String gruppe;
 	private Date datum;
 	
 	public Kostenstelle(String name, String kathegorie, Date datum, String gruppe) {

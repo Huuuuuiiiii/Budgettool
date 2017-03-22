@@ -11,6 +11,9 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+
+import data.Shortcut;
+import data.ShortcutWriter;
 import data.DropdownReader;
 import data.Waerung;
 import data.WaerungReader;
@@ -49,81 +52,92 @@ public class ShortcutView extends JPanel implements ActionListener {
 		this.mainPanel = mainPanel;
 
 		setLayout(new BorderLayout(0, 0));
-		setBorder(new EmptyBorder(10, 10, 10, 10));
-		setBackground(Farben.getDefaultBackgroundcolor());
-		setSize(600, 600);
-		titelPanel = new JPanel();
-		add(titelPanel, BorderLayout.NORTH);
+    
+        setBorder(new EmptyBorder(10, 10, 10, 10));
+        setBackground(Farben.getDefaultBackgroundcolor());
+        setSize(600, 600);
+        titelPanel = new JPanel();
+        add(titelPanel, BorderLayout.NORTH);
 
-		titelPanel.setLayout(new BorderLayout(0, 0));
-		titelPanel.setBackground(Farben.getDefaultBackgroundcolor());
+        titelPanel.setLayout(new BorderLayout(0, 0));
+        titelPanel.setBackground(Farben.getDefaultBackgroundcolor());
 
-		titel = new JLabel("Shortcut");
-		titel.setFont(Schrift.TITEL);
-		titel.setHorizontalAlignment(0);
-		titel.setBackground(Farben.getDefaultBackgroundcolor());
-		titel.setForeground(Farben.getDefaultFontcolor());
-		titelPanel.add(titel, BorderLayout.CENTER);
+        titel = new JLabel("Shortcut");
+        titel.setFont(Schrift.TITEL);
+        titel.setHorizontalAlignment(0);
+        titel.setBackground(Farben.getDefaultBackgroundcolor());
+        titel.setForeground(Farben.getDefaultFontcolor());
+        titelPanel.add(titel, BorderLayout.CENTER);
 
-		cancelButton = Components.createButtom("< Zurück");
-		titelPanel.add(cancelButton, BorderLayout.WEST);
-		cancelButton.addActionListener(this);
+        cancelButton = Components.createButtom("< Zurück");
+        titelPanel.add(cancelButton,  BorderLayout.WEST);
+        cancelButton.addActionListener(this);
 
-		editPanel = new JPanel();
-		add(editPanel, BorderLayout.CENTER);
-		editPanel.setBackground(Farben.getDefaultBackgroundcolor());
-		editPanel.setLayout(null);
+        editPanel = new JPanel();
+        add(editPanel, BorderLayout.CENTER);
+        editPanel.setBackground(Farben.getDefaultBackgroundcolor());
+        editPanel.setLayout(null);
 
-		nameLabel = Components.createImageLabel("pic/pencil.png", 67, 33, 40, 40);
-		editPanel.add(nameLabel);
+        nameLabel = Components.createImageLabel("pic/pencil.png", 67, 33, 40, 40);
+        editPanel.add(nameLabel);
 
-		betragLabel = Components.createImageLabel("pic/money.png", 67, 83, 40, 40);
-		editPanel.add(betragLabel);
+        betragLabel = Components.createImageLabel("pic/money.png", 67, 83, 40, 40);
+        editPanel.add(betragLabel);
 
-		kategorieLabel = Components.createImageLabel("pic/folder.png", 67, 133, 40, 40);
-		editPanel.add(kategorieLabel);
+        kategorieLabel = Components.createImageLabel("pic/folder.png", 67, 133, 40, 40);
+        editPanel.add(kategorieLabel);
 
-		personLabel = Components.createImageLabel("pic/person.png", 67, 183, 40, 40);
-		editPanel.add(personLabel);
+//        datumLabel = Components.createImageLabel("pic/calendar.png", 67, 183, 40, 40);
+//        editPanel.add(datumLabel);
 
-		nameTextField = Components.createTextField("", 147, 42, 155, 20);
-		editPanel.add(nameTextField);
+        personLabel = Components.createImageLabel("pic/person.png", 67, 183, 40, 40);
+        editPanel.add(personLabel);
 
-		betragTextField = Components.createTextField("", 147, 92, 116, 20);
-		editPanel.add(betragTextField);
+        nameTextField = Components.createTextField("", 147, 42, 155, 20);
+        editPanel.add(nameTextField);
 
-		betragComboBox = Components.createComboBox(273, 92, 80, 20);
-//		editPanel.add(betragComboBox);
-		WaerungReader waerung = new WaerungReader();
-		for (Waerung option : waerung.getOptions()) {
-			betragComboBox.addItem(option.getAbkuerzung());
-		}
-		editPanel.add(this.betragComboBox);
+        betragTextField = Components.createTextField("", 147, 92, 116, 20);
+        editPanel.add(betragTextField);
 
-		kategorieComboBox = Components.createComboBox(147, 142, 155, 20);
-		//editPanel.add(kategorieComboBox);
-		listOptions("Kategorie", kategorieComboBox);
-		editPanel.add(this.kategorieComboBox);
+        betragComboBox = Components.createComboBox(273, 92, 66, 20);
+        editPanel.add(betragComboBox);
 
-		personComboBox = Components.createComboBox(147, 192, 154, 20);
-//		editPanel.add(personComboBox);
-		listOptions("Person", personComboBox);
-		editPanel.add(this.personComboBox);
+        kategorieComboBox = Components.createComboBox(147, 142, 155, 20);
+        editPanel.add(kategorieComboBox);
 
-		addButton = Components.createButtom("Speichern");
-		addButton.setBounds(250, 292, 89, 23);
-		addButton.setBorder(Rahmen.roundedBorder);
-		editPanel.add(addButton);
-	}
+//        daySpinner = Components.createSpinner(147, 192, 40, 20);
+//        editPanel.add(daySpinner);
+//
+//        monthSpinner = Components.createSpinner(197, 192, 40, 20);
+//        editPanel.add(monthSpinner);
+//
+//        yearSpinner = Components.createSpinner(247, 192, 55, 20);
+//        editPanel.add(yearSpinner);
+
+        personComboBox = Components.createComboBox(147, 192, 154, 20);
+        editPanel.add(personComboBox);
+
+        addButton = Components.createButtom("Speichern");
+        addButton.setBounds(250, 292, 89, 23);
+        addButton.setBorder(Rahmen.roundedBorder);
+        addButton.addActionListener(this);
+        editPanel.add(addButton);
+    }
+
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		if (e.getSource() == cancelButton) {
+
+		if (e.getSource() == cancelButton){
 			mainPanel.getShortcutViewPanel().setVisible(false);
 			mainPanel.getMainViewPanel().setVisible(true);
 		}
-		if (e.getSource() == addButton) {
+		if (e.getSource() == addButton){
+			String image = String.valueOf(Character.toUpperCase(nameTextField.getText().charAt(0))) + ".png";
+			new ShortcutWriter(new Shortcut(nameTextField.getText(), image, betragTextField.getText(), kategorieComboBox.getSelectedItem().toString(), personComboBox.getSelectedItem().toString()));
+//			new ShortcutWriter(new Shortcut("lol","lol","lol","lol","lol"));
+
 			this.setVisible(false);
 			mainPanel.getMainViewPanel().setVisible(true);
 		}
