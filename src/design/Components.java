@@ -10,6 +10,8 @@ import design.Rahmen;
 import design.Schrift;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.Date;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,7 +20,12 @@ import javax.swing.JLabel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
+import javax.swing.SpinnerDateModel;
+import javax.swing.SpinnerModel;
+import javax.swing.JSpinner.DateEditor;
 import javax.swing.border.Border;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class Components {
     public static JLabel createImageLabel(String icon, int x, int y, int white, int higet) {
@@ -38,8 +45,8 @@ public class Components {
         return textField;
     }
 
-    public static JComboBox createComboBox(int x, int y, int white, int higet) {
-        JComboBox comboBox = new JComboBox();
+    public static JComboBox<String> createComboBox(int x, int y, int white, int higet) {
+        JComboBox<String> comboBox = new JComboBox<>();
         comboBox.setFont(Schrift.STANDART);
         comboBox.setBounds(x, y, white, higet);
         comboBox.setForeground(Farben.getDefaultFontcolor());
@@ -48,7 +55,9 @@ public class Components {
     }
 
     public static JSpinner createSpinner(int x, int y, int white, int higet) {
-        JSpinner spinner = new JSpinner();
+    	SpinnerDateModel sdm = new SpinnerDateModel();
+		JSpinner spinner = new JSpinner(sdm);
+        spinner.setEditor(new DateEditor(spinner,"dd.MM.yyyy"));
         spinner.setFont(Schrift.STANDART);
         spinner.setBounds(x, y, white, higet);
         spinner.setForeground(Farben.getDefaultFontcolor());

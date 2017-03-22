@@ -1,3 +1,4 @@
+import data.WaerungReader;
 import view.ViewHandler;
 
 /*
@@ -13,6 +14,8 @@ public class Main {
 	public static void main(String[] args) {
 		ViewHandler mainView = new ViewHandler();
 //		System.out.println("Hallo Welt");
+		
+//		WaerungReader reader = new WaerungReader();
 	}
 
 }

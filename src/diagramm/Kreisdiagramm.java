@@ -13,8 +13,9 @@ public class Kreisdiagramm extends JComponent {
 	
 	public Kreisdiagramm(double ausgaben, double restbetrag) {
 		Winkel[] slices = { 
-				new Winkel(ausgaben, new Color(248, 69, 69)), 
-				new Winkel(restbetrag, new Color(45, 203, 112))
+				new Winkel(restbetrag, new Color(45, 203, 112)),
+				new Winkel(ausgaben, new Color(248, 69, 69))
+				
 		};
 		this.slices = slices;
 	}
@@ -25,14 +26,14 @@ public class Kreisdiagramm extends JComponent {
    
 	private void drawPie(Graphics2D g, Rectangle area, Winkel[] slices) {
 		double total = 0.0;
-		double curValue = 0.0;
+		double curValue = 90.0;
 		int startAngle = 0;
-		int grösse;
+		int groesse;
 		
 		if (area.width <= area.height){
-			grösse = area.width -30;
+			groesse = area.width -30;
 		}else 
-			grösse = area.height -30;
+			groesse = area.height -30;
 		
 		for (int i = 0; i < slices.length; i++) {
 			total += slices[i].getValue();
@@ -41,7 +42,7 @@ public class Kreisdiagramm extends JComponent {
 			startAngle = (int) (360 * curValue / total);
 			int arcAngle = (int) (slices[i].getValue() * 360 / total);
 			g.setColor(slices[i].getColor());
-			g.fillArc((area.width - grösse)/2, (area.height - grösse)/2, grösse, grösse, startAngle, arcAngle);
+			g.fillArc((area.width - groesse)/2, (area.height - groesse)/2, groesse, groesse, startAngle, arcAngle);
 			curValue += slices[i].getValue();
 		}
 	}

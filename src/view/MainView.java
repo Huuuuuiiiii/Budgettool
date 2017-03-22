@@ -127,7 +127,7 @@ public class MainView extends JPanel implements ActionListener{
 		monthBudgetLabel.setForeground(Farben.getDefaultFontcolor());
 		monthPanel.add(monthBudgetLabel, BorderLayout.NORTH);
 		
-		monthPanel.add(new Kreisdiagramm(300,60), BorderLayout.CENTER);
+		monthPanel.add(new Kreisdiagramm(60,300), BorderLayout.CENTER);
 		
 		erfassungsPanel = new JPanel();
 		monthPanel.add(erfassungsPanel, BorderLayout.SOUTH);
