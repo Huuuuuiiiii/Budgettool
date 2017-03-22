@@ -12,6 +12,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import data.DropdownReader;
+import data.Waerung;
+import data.WaerungReader;
 import design.Components;
 import design.Farben;
 import design.Rahmen;
@@ -81,10 +83,6 @@ public class ShortcutView extends JPanel implements ActionListener {
 		kategorieLabel = Components.createImageLabel("pic/folder.png", 67, 133, 40, 40);
 		editPanel.add(kategorieLabel);
 
-		// datumLabel = Components.createImageLabel("pic/calendar.png", 67, 183,
-		// 40, 40);
-		// editPanel.add(datumLabel);
-
 		personLabel = Components.createImageLabel("pic/person.png", 67, 183, 40, 40);
 		editPanel.add(personLabel);
 
@@ -94,25 +92,25 @@ public class ShortcutView extends JPanel implements ActionListener {
 		betragTextField = Components.createTextField("", 147, 92, 116, 20);
 		editPanel.add(betragTextField);
 
-		betragComboBox = Components.createComboBox(273, 92, 66, 20);
-		editPanel.add(betragComboBox);
+		betragComboBox = Components.createComboBox(273, 92, 80, 20);
+//		editPanel.add(betragComboBox);
+		WaerungReader waerung = new WaerungReader();
+		for (Waerung option : waerung.getOptions()) {
+			betragComboBox.addItem(option.getAbkuerzung());
+		}
+		editPanel.add(this.betragComboBox);
 
 		kategorieComboBox = Components.createComboBox(147, 142, 155, 20);
-		editPanel.add(kategorieComboBox);
-
-		// daySpinner = Components.createSpinner(147, 192, 40, 20);
-		// editPanel.add(daySpinner);
-		//
-		// monthSpinner = Components.createSpinner(197, 192, 40, 20);
-		// editPanel.add(monthSpinner);
-		//
-		// yearSpinner = Components.createSpinner(247, 192, 55, 20);
-		// editPanel.add(yearSpinner);
+		//editPanel.add(kategorieComboBox);
+		listOptions("Kategorie", kategorieComboBox);
+		editPanel.add(this.kategorieComboBox);
 
 		personComboBox = Components.createComboBox(147, 192, 154, 20);
-		editPanel.add(personComboBox);
+//		editPanel.add(personComboBox);
+		listOptions("Person", personComboBox);
+		editPanel.add(this.personComboBox);
 
-		addButton = Components.createButtom("Enter");
+		addButton = Components.createButtom("Speichern");
 		addButton.setBounds(250, 292, 89, 23);
 		addButton.setBorder(Rahmen.roundedBorder);
 		editPanel.add(addButton);

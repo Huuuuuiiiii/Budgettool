@@ -154,7 +154,7 @@ public class Settings extends JPanel implements ActionListener {
 		zyklusLabel = Components.createLabel("Zyklus", 20, 156, 100, 14);
 		settingsBudgetPanel.add(zyklusLabel);
 
-		waerungComboBox = Components.createComboBox(122, 33, 62, 20);
+		waerungComboBox = Components.createComboBox(122, 33, 80, 20);
 		for (Waerung option : waerung.getOptions()) {
 			waerungComboBox.addItem(option.getAbkuerzung());
 		}
@@ -163,16 +163,16 @@ public class Settings extends JPanel implements ActionListener {
 		mothBudgetTextField = Components.createTextField("", 122, 73, 86, 20);
 		settingsBudgetPanel.add(mothBudgetTextField);
 
-		finazMothSpinner = Components.createSpinner(122, 113, 86, 20);
+		finazMothSpinner = Components.createSpinner(122, 113, 90, 20);
 		settingsBudgetPanel.add(finazMothSpinner);
 
-		mothBudgetComboBox = Components.createComboBox(218, 73, 62, 20);
+		mothBudgetComboBox = Components.createComboBox(218, 73, 80, 20);
 		for (Waerung option : waerung.getOptions()) {
 			mothBudgetComboBox.addItem(option.getAbkuerzung());
 		}
 		settingsBudgetPanel.add(mothBudgetComboBox);
 
-		zyklusComboBox = Components.createComboBox(122, 153, 86, 20);
+		zyklusComboBox = Components.createComboBox(122, 153, 90, 20);
 		zyklusComboBox.addItem("Täglich");
 		zyklusComboBox.addItem("Wöchentlich");
 		zyklusComboBox.addItem("Monatlich");

@@ -114,7 +114,7 @@ public class AusgabenView extends JPanel implements ActionListener {
         betragTextField = Components.createTextField("", 147, 92, 116, 20);
         editPanel.add(this.betragTextField);
         
-        betragComboBox = Components.createComboBox(273, 92, 66, 20);
+        betragComboBox = Components.createComboBox(273, 92, 80, 20);
         WaerungReader waerung = new WaerungReader();
         for(Waerung option : waerung.getOptions()){
         	betragComboBox.addItem(option.getAbkuerzung());
@@ -138,7 +138,7 @@ public class AusgabenView extends JPanel implements ActionListener {
         listOptions("Person", personComboBox);
         editPanel.add(this.personComboBox);
         
-        addButton = Components.createButtom("Enter");
+        addButton = Components.createButtom("Speichern");
         addButton.setBounds(250, 292, 89, 23);
         addButton.setBorder(Rahmen.roundedBorder);
         addButton.addActionListener(this);
