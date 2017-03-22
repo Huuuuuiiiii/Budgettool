@@ -1,21 +1,20 @@
 package data;
 
-public class Shortcut {
+import java.util.Date;
 
-	private String name;
+public class Shortcut extends Kostenstelle {
+
+	private String text;
 	private String image;
-	
-	public Shortcut(String image) {
-		this(image, null);
-	}
 
-	public Shortcut(String name, String image) {
-		this.name = name;
+	public Shortcut(String text, String image, String name, String kathegorie, String gruppe ) {
+		super(name, kathegorie, new Date() , gruppe);
+		this.text = name;
 		this.image = image;
 	}
 
-	public String getName() {
-		return name;
+	public String getText() {
+		return text;
 	}
 
 	public String getImage() {
