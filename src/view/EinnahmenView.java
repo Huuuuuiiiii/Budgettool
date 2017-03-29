@@ -8,7 +8,6 @@ package view;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import data.CsvWriter;
@@ -22,25 +21,22 @@ import design.Rahmen;
 import design.Schrift;
 
 import javax.swing.JButton;
-import javax.swing.ImageIcon;
 import javax.swing.JTextField;
-import java.awt.Color;
 import javax.swing.JComboBox;
 import javax.swing.JSpinner;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.Date;
 
 public class EinnahmenView extends JPanel implements ActionListener {
 
+	private static final long serialVersionUID = 1L;
 	private JButton cancelButton, addButton;
 	private JPanel editPanel, titelPanel;
 	private ViewHandler mainPanel;
 	private JLabel betragLabel, datumLabel, personLabel, kategorieLabel, titel;
 	private JTextField betragTextField;
-	private JSpinner dateSpinner, monthSpinner, yearSpinner;
+	private JSpinner dateSpinner;
 	private static JComboBox<String> betragComboBox, personComboBox, kategorieComboBox;
 	private CsvWriter writer = new CsvWriter("Einnahmen");
 
@@ -98,18 +94,18 @@ public class EinnahmenView extends JPanel implements ActionListener {
 		for (Waerung option : waerung.getOptions()) {
 			betragComboBox.addItem(option.getAbkuerzung());
 		}
-		editPanel.add(this.betragComboBox);
+		editPanel.add(EinnahmenView.betragComboBox);
 
 		kategorieComboBox = Components.createComboBox(147, 142, 155, 20);
 		listOptions("Kategorie", kategorieComboBox);
-		editPanel.add(this.kategorieComboBox);
+		editPanel.add(EinnahmenView.kategorieComboBox);
 
 		dateSpinner = Components.createSpinner(147, 192, 100, 20);
 		editPanel.add(this.dateSpinner);
 
 		personComboBox = Components.createComboBox(148, 242, 154, 20);
 		listOptions("Person", personComboBox);
-		editPanel.add(this.personComboBox);
+		editPanel.add(EinnahmenView.personComboBox);
 
 		addButton = Components.createButtom("Speichern");
 		addButton.setBounds(250, 292, 89, 23);

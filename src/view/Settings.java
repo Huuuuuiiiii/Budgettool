@@ -4,8 +4,6 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import java.awt.Color;
-
 import javax.swing.JSplitPane;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -15,7 +13,6 @@ import javax.swing.JButton;
 import java.awt.CardLayout;
 
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 
 import data.DropdownWriter;
 import data.Waerung;
@@ -37,6 +34,10 @@ import javax.swing.JSpinner;
 
 public class Settings extends JPanel implements ActionListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel titelPanel, settingsPanel, settingsLayoutPanel, settingsAddPanel, settingsBudgetPanel,
 			settingsKathegoriePanel;
 	private JButton cancelButton, personButton, kategorieButton;

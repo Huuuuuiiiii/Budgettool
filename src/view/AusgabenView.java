@@ -10,7 +10,6 @@ import design.Farben;
 import design.Rahmen;
 import design.Schrift;
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -19,12 +18,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
-import javax.swing.SpinnerDateModel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JSpinner.DateEditor;
 import java.util.Date;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 import data.CsvWriter;
 import data.DropdownReader;
@@ -34,42 +29,19 @@ import data.WaerungReader;
 
 public class AusgabenView extends JPanel implements ActionListener {
 
+	private static final long serialVersionUID = 1L;
 	private JButton cancelButton, addButton;
 	private JPanel editPanel, titelPanel;
 	private JLabel betragLabel, datumLabel, personLabel, kategorieLabel, titel;
 	private JTextField betragTextField;
-	private JSpinner dateSpinner, monthSpinner, yearSpinner;
-	private JComboBox betragComboBox;
-	private static JComboBox personComboBox;
-	private static JComboBox kategorieComboBox;
+	private JSpinner dateSpinner;
+	private JComboBox<String> betragComboBox;
+	private static JComboBox<String> personComboBox;
+	private static JComboBox<String> kategorieComboBox;
 	private ViewHandler mainPanel;
 	private CsvWriter writer = new CsvWriter("Ausgaben");
 
     public AusgabenView(ViewHandler mainPanel) {
-
-//Datumsfeld beginn
-
-//    	 final SpinnerDateModel sdm = new SpinnerDateModel();
-//    	 final JSpinner spinner = new JSpinner(sdm);
-//    	 spinner.setEditor(new DateEditor(spinner,"dd.MM.yyyy"));
-//
-//    	 spinner.addChangeListener(new ChangeListener(){
-//
-//    		public void stateChanged(ChangeEvent arg0){
-//    			Date fromSpinner = (Date) spinner.getValue();
-//    			Date fromModel = sdm.getDate();
-//    			System.out.println(fromSpinner + " or " + fromModel);
-//    		}
-//    	 });
-//
-//    	 setPreferredSize(new Dimension(147, 192));
-//    	 editPanel.add(spinner);
-//    	 editPanel.add(this.add(spinner));
-//
-//    	 setVisible(true);
-
-
-//Datumsfeld ende
 
     	this.mainPanel = mainPanel;
 
@@ -123,20 +95,14 @@ public class AusgabenView extends JPanel implements ActionListener {
 
         kategorieComboBox = Components.createComboBox(147, 142, 155, 20);
         listOptions("Kategorie", kategorieComboBox);
-        editPanel.add(this.kategorieComboBox);
+        editPanel.add(AusgabenView.kategorieComboBox);
 
         dateSpinner = Components.createSpinner(147, 192, 100, 20);
         editPanel.add(this.dateSpinner);
 
-//        monthSpinner = Components.createSpinner(197, 192, 40, 20);
-//        editPanel.add(this.monthSpinner);
-
-//        yearSpinner = Components.createSpinner(247, 192, 55, 20);
-//        editPanel.add(this.yearSpinner);
-
         personComboBox= Components.createComboBox(148, 242, 154, 20);
         listOptions("Person", personComboBox);
-        editPanel.add(this.personComboBox);
+        editPanel.add(AusgabenView.personComboBox);
       
         addButton = Components.createButtom("Speichern");      
         addButton.setBounds(250, 292, 89, 23);

@@ -2,8 +2,6 @@ package view;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.CardLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import design.Farben;
 import java.awt.Color;
 /*
@@ -13,6 +11,7 @@ import java.awt.Color;
 
 public class ViewHandler extends JFrame{
 
+	private static final long serialVersionUID = 1L;
 	private JPanel mainPanel;
 	private MainView mainViewPanel = new MainView(this);
 	private ShortcutView shortcutViewPanel = new ShortcutView(this);
@@ -26,7 +25,7 @@ public class ViewHandler extends JFrame{
 	public ViewHandler() {
 		
 		this.getContentPane().setBackground(Color.WHITE);
-		this.setBounds(100, 100, 505, 502);
+		this.setBounds(100, 100, 700, 500);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		mainPanel = new JPanel();

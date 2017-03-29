@@ -23,8 +23,6 @@ public class ShortcutReader {
 			while ((crunchifyLine = crunchifyBuffer.readLine()) != null) {
 				options.add(crunchifyCSVtoArrayList(crunchifyLine));
 			}
-			
-			System.out.println(options);
 				
 		} catch (IOException e) {
 			e.printStackTrace();

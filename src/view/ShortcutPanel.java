@@ -6,9 +6,7 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -16,7 +14,6 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 import javax.swing.SwingConstants;
-import javax.swing.border.LineBorder;
 
 import data.Shortcut;
 import design.Farben;
@@ -49,7 +46,7 @@ public class ShortcutPanel extends JPanel implements ListCellRenderer {
 		
 		this.add(lbImage, BorderLayout.CENTER);
 
-		this.setPreferredSize(new Dimension(70, 70));
+//		this.setPreferredSize(new Dimension(70, this.getHeight()));
 	}
 
 	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {

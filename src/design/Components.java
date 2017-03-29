@@ -8,11 +8,7 @@ package design;
 import design.Farben;
 import design.Rahmen;
 import design.Schrift;
-import java.awt.Color;
-import java.awt.Font;
-import java.util.Date;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -21,11 +17,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 import javax.swing.SpinnerDateModel;
-import javax.swing.SpinnerModel;
 import javax.swing.JSpinner.DateEditor;
-import javax.swing.border.Border;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 public class Components {
     public static JLabel createImageLabel(String icon, int x, int y, int white, int higet) {

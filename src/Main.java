@@ -1,6 +1,4 @@
-import java.util.Date;
 
-import data.WaerungReader;
 import view.ViewHandler;
 
 /*

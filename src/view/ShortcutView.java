@@ -8,7 +8,6 @@ package view;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 
@@ -23,25 +22,25 @@ import design.Rahmen;
 import design.Schrift;
 
 import javax.swing.JButton;
-import javax.swing.ImageIcon;
 import javax.swing.JTextField;
-import java.awt.Color;
 import javax.swing.JComboBox;
-import javax.swing.JSpinner;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ShortcutView extends JPanel implements ActionListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JButton cancelButton, addButton;
 	private JPanel editPanel, titelPanel;
-	private JLabel betragLabel, datumLabel, personLabel, kategorieLabel, titel, nameLabel;
+	private JLabel betragLabel, personLabel, kategorieLabel, titel, nameLabel;
 	private JTextField betragTextField, nameTextField;
 	// private JSpinner daySpinner, monthSpinner, yearSpinner;
-	private JComboBox betragComboBox;
-	private static JComboBox personComboBox;
-	private static JComboBox kategorieComboBox;
+	private JComboBox<String> betragComboBox;
+	private static JComboBox<String> personComboBox;
+	private static JComboBox<String> kategorieComboBox;
 	private ViewHandler mainPanel;
 
 	/**
@@ -87,9 +86,6 @@ public class ShortcutView extends JPanel implements ActionListener {
         kategorieLabel = Components.createImageLabel("pic/folder.png", 67, 133, 40, 40);
         editPanel.add(kategorieLabel);
 
-//        datumLabel = Components.createImageLabel("pic/calendar.png", 67, 183, 40, 40);
-//        editPanel.add(datumLabel);
-
         personLabel = Components.createImageLabel("pic/person.png", 67, 183, 40, 40);
         editPanel.add(personLabel);
 
@@ -108,21 +104,11 @@ public class ShortcutView extends JPanel implements ActionListener {
 
         kategorieComboBox = Components.createComboBox(147, 142, 155, 20);
         listOptions("Kategorie", kategorieComboBox);
-		editPanel.add(this.kategorieComboBox);
-
-//        daySpinner = Components.createSpinner(147, 192, 40, 20);
-//        editPanel.add(daySpinner);
-//
-//        monthSpinner = Components.createSpinner(197, 192, 40, 20);
-//        editPanel.add(monthSpinner);
-//
-//        yearSpinner = Components.createSpinner(247, 192, 55, 20);
-//        editPanel.add(yearSpinner);
+		editPanel.add(ShortcutView.kategorieComboBox);
 
         personComboBox = Components.createComboBox(147, 192, 154, 20);
         listOptions("Person", personComboBox);
-		editPanel.add(this.personComboBox);
-
+		editPanel.add(ShortcutView.personComboBox);
 
         addButton = Components.createButtom("Speichern");
         addButton.setBounds(250, 292, 89, 23);
@@ -131,10 +117,8 @@ public class ShortcutView extends JPanel implements ActionListener {
         editPanel.add(addButton);
     }
 
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
 
 		if (e.getSource() == cancelButton){
 			mainPanel.getShortcutViewPanel().setVisible(false);
@@ -143,7 +127,8 @@ public class ShortcutView extends JPanel implements ActionListener {
 		if (e.getSource() == addButton){
 			String image = "pic/Buchstaben/" + String.valueOf(Character.toUpperCase(nameTextField.getText().charAt(0))) + ".png";
 			new ShortcutWriter(new Shortcut(nameTextField.getText(), image, betragTextField.getText(), kategorieComboBox.getSelectedItem().toString(), personComboBox.getSelectedItem().toString()));
-
+			
+			MainView.updateShortcuts();
 			this.setVisible(false);
 			mainPanel.getMainViewPanel().setVisible(true);
 		}
