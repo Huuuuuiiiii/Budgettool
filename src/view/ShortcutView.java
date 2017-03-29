@@ -141,9 +141,8 @@ public class ShortcutView extends JPanel implements ActionListener {
 			mainPanel.getMainViewPanel().setVisible(true);
 		}
 		if (e.getSource() == addButton){
-			String image = String.valueOf(Character.toUpperCase(nameTextField.getText().charAt(0))) + ".png";
+			String image = "pic/Buchstaben/" + String.valueOf(Character.toUpperCase(nameTextField.getText().charAt(0))) + ".png";
 			new ShortcutWriter(new Shortcut(nameTextField.getText(), image, betragTextField.getText(), kategorieComboBox.getSelectedItem().toString(), personComboBox.getSelectedItem().toString()));
-//			new ShortcutWriter(new Shortcut("lol","lol","lol","lol","lol"));
 
 			this.setVisible(false);
 			mainPanel.getMainViewPanel().setVisible(true);

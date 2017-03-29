@@ -9,7 +9,7 @@ public class Shortcut extends Kostenstelle {
 
 	public Shortcut(String text, String image, String name, String kathegorie, String gruppe ) {
 		super(name, kathegorie, new Date() , gruppe);
-		this.text = name;
+		this.text = text;
 		this.image = image;
 	}
 

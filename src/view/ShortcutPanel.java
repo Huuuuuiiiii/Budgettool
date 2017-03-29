@@ -5,6 +5,7 @@
 
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -14,9 +15,13 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
+import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import data.Shortcut;
+import design.Farben;
+import design.Rahmen;
+import design.Schrift;
 
 public class ShortcutPanel extends JPanel implements ListCellRenderer {
 	
@@ -28,26 +33,31 @@ public class ShortcutPanel extends JPanel implements ListCellRenderer {
 	public ShortcutPanel() {
 		setOpaque(true);
 
-		this.setLayout(null);
+		this.setLayout(new BorderLayout());
+		this.setBorder(Rahmen.roundedBorder);
 
 		title = new JLabel();
-		title.setBounds(70, 2, 200, 28);
-		this.add(title);
+		title.setFont(Schrift.FETT);
+		title.setHorizontalAlignment(SwingConstants.CENTER);
+		title.setBackground(Farben.getDefaultBackgroundcolor());
+		title.setForeground(Farben.getDefaultFontcolor());
+		this.add(title, BorderLayout.SOUTH);
 
 		lbImage = new JLabel();
-		lbImage.setBounds(2, 2, 64, 48);
-		this.add(lbImage);
+		lbImage.setHorizontalAlignment(SwingConstants.CENTER);
+		lbImage.setBorder(null);
+		
+		this.add(lbImage, BorderLayout.CENTER);
 
-		this.setSize(200, 52);
-		this.setPreferredSize(new Dimension(200, 52));
+		this.setPreferredSize(new Dimension(70, 52));
 	}
 
 	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
 
 		Shortcut shorcut = (Shortcut) value;
-		title.setText(shorcut.getName());
+		title.setText(shorcut.getText());
 
-		lbImage.setIcon(new ImageIcon(getClass().getResource(shorcut.getImage())));
+		lbImage.setIcon(new ImageIcon(shorcut.getImage()));
 		lbImage.setBorder(new LineBorder(Color.red));
 
 		if (isSelected) {

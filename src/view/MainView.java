@@ -28,6 +28,7 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import data.Shortcut;
+import data.ShortcutReader;
 import design.Components;
 import design.Farben;
 import design.Rahmen;
@@ -54,7 +55,7 @@ public class MainView extends JPanel implements ActionListener{
 		
 		setBackground(Farben.getDefaultBackgroundcolor());
 		setBorder(new EmptyBorder(10, 10, 10, 10));
-		setLayout(new BorderLayout(0, 0));
+		setLayout(new BorderLayout(10, 10));
 		
 		shortcutsPanel = new JPanel();
 		add(shortcutsPanel, BorderLayout.EAST);
@@ -87,6 +88,9 @@ public class MainView extends JPanel implements ActionListener{
 		shortcutlist.setBorder(Rahmen.defaultBorder);
 		shortcutsPanel.add(new JScrollPane(shortcutlist), BorderLayout.CENTER);
 		
+		updateShortcuts();
+//		listModel.addElement(new Shortcut("test", "pic/Buchstaben/P.png"));
+		
 		titelPanel = new JPanel();
 		add(titelPanel, BorderLayout.NORTH);
 		titelPanel.setLayout(new BorderLayout());
@@ -105,8 +109,14 @@ public class MainView extends JPanel implements ActionListener{
 		menuButton.setBorder(null);
 		titelPanel.add(menuButton, BorderLayout.WEST);
 		
+		uebersichtPanel = new JPanel();
+		uebersichtPanel.setLayout(new BorderLayout(10,10));
+		add(uebersichtPanel, BorderLayout.CENTER);
+		uebersichtPanel.setBackground(Farben.getDefaultBackgroundcolor());
+		uebersichtPanel.setLayout(new BorderLayout(0, 0));
+		
 		dayliBudgetPanel = new JPanel();
-		add(dayliBudgetPanel, BorderLayout.SOUTH);
+		uebersichtPanel.add(dayliBudgetPanel, BorderLayout.SOUTH);
 		dayliBudgetPanel.setBackground(Farben.getDefaultBackgroundcolor());
 		dayliBudgetPanel.setLayout(new BorderLayout(0, 0));
 		
@@ -121,7 +131,7 @@ public class MainView extends JPanel implements ActionListener{
 		dayliBudgetLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		monthPanel = new JPanel();
-		add(monthPanel, BorderLayout.CENTER);
+		uebersichtPanel.add(monthPanel, BorderLayout.CENTER);
 		monthPanel.setBackground(Farben.getDefaultBackgroundcolor());
 		monthPanel.setLayout(new BorderLayout(0, 0));
 		monthPanel.setBorder(new EmptyBorder(50, 10, 30, 10));
@@ -176,5 +186,12 @@ public class MainView extends JPanel implements ActionListener{
 			this.setVisible(false);
 			mainPanel.getEinnahmeViewPanel().setVisible(true);
 		}	
+	}
+	
+	public void updateShortcuts(){
+		ShortcutReader read = new ShortcutReader();
+		for(Shortcut a : read.getOptions() ) {
+			listModel.addElement(a);
+		}
 	}
 }

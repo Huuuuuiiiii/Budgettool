@@ -16,8 +16,9 @@ public class ShortcutWriter {
 			FileWriter fw = new FileWriter(file.getAbsoluteFile(), true);
 			BufferedWriter bw = new BufferedWriter(fw);
 
-			bw.write(shortcut.getName() + ";" + shortcut.getKathegorie() + ";" + shortcut.getDatum() + ";" + shortcut.getGruppe() + shortcut.getText() + ";" + shortcut.getImage() + "/n");
-
+			bw.write(shortcut.getName() + ";" + shortcut.getKathegorie() + ";" + shortcut.getDatum() + ";" + shortcut.getGruppe() + ";" + shortcut.getText() + ";" + shortcut.getImage());
+			bw.newLine();
+			
 			bw.close();
 			fw.close();
 

@@ -10,12 +10,12 @@ public class ShortcutReader {
 	
 	private List<Shortcut> options;
 	
-	public List<Shortcut> getOptions1(){
+	public List<Shortcut> getOptions(){
 			
 		BufferedReader crunchifyBuffer = null;
 		
 		try {
-			crunchifyBuffer = new BufferedReader(new FileReader("Waehrungen.csv"));
+			crunchifyBuffer = new BufferedReader(new FileReader("Shortcuts"));
 			
 			String crunchifyLine;
 			options = new ArrayList<Shortcut>();
@@ -41,14 +41,10 @@ public class ShortcutReader {
 	private Shortcut crunchifyCSVtoArrayList(String crunchifyCSV) {
 		Shortcut shortcut = null;
 		
-		if (crunchifyCSV != null) {
+		if (crunchifyCSV != null || crunchifyCSV == "") {
 			String[] splitData = crunchifyCSV.split("\\s*;\\s*");
-			shortcut = new Shortcut((splitData[3].trim()), splitData[4].trim(), splitData[0].trim(), splitData[1].trim(),splitData[2].trim());
+			shortcut = new Shortcut(splitData[4].trim(), splitData[5].trim(), splitData[0].trim(), splitData[1].trim(), splitData[3].trim());
 		}
 		return shortcut;
 	}	
-	
-	public List<Shortcut> getOptions() {
-		return options;
-	}
 }	
