@@ -33,7 +33,7 @@ public class ShortcutPanel extends JPanel implements ListCellRenderer {
 	public ShortcutPanel() {
 		setOpaque(true);
 
-		this.setLayout(new BorderLayout());
+		this.setLayout(new BorderLayout(5,5));
 		this.setBorder(Rahmen.roundedBorder);
 
 		title = new JLabel();
@@ -49,7 +49,7 @@ public class ShortcutPanel extends JPanel implements ListCellRenderer {
 		
 		this.add(lbImage, BorderLayout.CENTER);
 
-		this.setPreferredSize(new Dimension(70, 52));
+		this.setPreferredSize(new Dimension(70, 70));
 	}
 
 	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
@@ -58,7 +58,6 @@ public class ShortcutPanel extends JPanel implements ListCellRenderer {
 		title.setText(shorcut.getText());
 
 		lbImage.setIcon(new ImageIcon(shorcut.getImage()));
-		lbImage.setBorder(new LineBorder(Color.red));
 
 		if (isSelected) {
 			this.setBackground(list.getSelectionBackground());
